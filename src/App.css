@@ -1,1 +1,11 @@
+#navlinks {
+    color: white;
+    font-weight: bold;
+    background-color: grey;
+    padding: 20px;
+}
 
+#navlinks:hover {
+    background-color: red;
+    cursor: pointer;
+}
