@@ -3,9 +3,19 @@
     font-weight: bold;
     background-color: grey;
     padding: 20px;
+    text-align: left;
 }
 
 #navlinks:hover {
     background-color: red;
+    cursor: pointer;
+}
+
+#dropdownoptions{
+     color: white;
+    font-weight: bold;
+}
+#dropdownoptions:hover{
+     background-color: red;
     cursor: pointer;
 }
