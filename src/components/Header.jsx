@@ -6,8 +6,9 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function Header() {
   return (
     <>
-      <div className="" style={{ background: "grey", opacity: "30px" }}>
-        <Navbar expand="lg" className="">
+    
+      <div   style={{ background: "grey"}}>
+        <Navbar expand="lg" className="py-3">
           <Container>
             <Navbar.Brand href="#home" className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,6 +32,7 @@ function Header() {
           </Container>
         </Navbar>
       </div>
+     
     </>
   )
 }

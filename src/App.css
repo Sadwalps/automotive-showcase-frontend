@@ -1,7 +1,8 @@
+
 #navlinks {
     color: white;
     font-weight: bold;
-    background-color: grey;
+    background-color:rgba(128, 128, 128, 0.245);
     padding: 20px;
     text-align: left;
 }
@@ -18,4 +19,14 @@
 #dropdownoptions:hover{
      background-color: red;
     cursor: pointer;
+}
+
+.coro{
+    font-size: 80px;
+}
+
+@media screen and (max-width:706px){
+    .coro{
+        font-size: 20px;
+    }
 }
