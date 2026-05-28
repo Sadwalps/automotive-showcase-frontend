@@ -12,24 +12,29 @@ function Home() {
     <div className='text-primary fs-1' style={{}}>
        <Carousel >
       <Carousel.Item interval={1000} >
-        <img className='w-100' src="https://images.hdqwalls.com/download/ferrari-sf90-xx-stradale-95-3440x1440.jpg" alt="" />
+         <div className='carouselimage1'>
+        </div>
+        
         <Carousel.Caption  style={{textAlign:"top"}}>
-          <h5 className='coro'>Discover Your Dream Car</h5>
-          <h6 className='coro'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
+          <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
+          <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500}>
-        <img className='w-100' src="https://images.hdqwalls.com/download/lamborghini-centenario-4k-2020-hn-3440x1440.jpg" alt="" />
+        <div className='carouselimage2'>
+        </div>
         <Carousel.Caption>
-         <h5 className='coro'>Built for Car Lovers</h5>
-          <h6 className='coro'>Browse iconic cars, compare performance, and save the ones you love</h6>
+         <h5 className='carouselmainheading'>Built for Car Lovers</h5>
+          <h6 className='carouselsubheading'>Browse iconic cars, compare performance, and save the ones you love</h6>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
+         <div className='carouselimage2'>
+        </div>
          <img className='w-100' src="https://images.hdqwalls.com/download/bugatti-bolide-2021-8k-qb-3440x1440.jpg" alt="" />
         <Carousel.Caption>
-         <h5 className='coro'>Discover Your Dream Car</h5>
-          <h6 className='coro'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
+         <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
+          <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
