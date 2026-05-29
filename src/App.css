@@ -34,6 +34,13 @@
     width: 100%;
     height: 90vh;
 }
+.carouselimage3{
+     background-image: url(https://images.hdqwalls.com/download/bugatti-bolide-2021-8k-qb-3440x1440.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+}
 
 .carouselmainheading{
     font-size: 70px;
@@ -48,6 +55,8 @@
     }
      .carouselimage1{
          background-image: url(https://i.redd.it/bww0e1253ea91.jpg);
+    }  
+    .carouselimage3{
+        background-image: url(https://wallpaperaccess.com/full/8982230.jpg);
     }
-    
 }
