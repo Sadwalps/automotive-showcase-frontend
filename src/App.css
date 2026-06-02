@@ -53,8 +53,15 @@
      position: absolute;
 }
 .homecarhovercard{
-    position: absolute;
-   
+    position: absolute; 
+}
+
+#homecarhovercard2btn{
+    background-color: white;
+    color: red;
+    border-color: rgb(161, 22, 22);
+    border-width: 10px;
+    border-style: solid;
 }
 
 
