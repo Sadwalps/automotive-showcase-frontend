@@ -52,21 +52,17 @@ function Home() {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="row">
-              <div className="col-md-4 homecarmaincard">
-                <div className='homecarcard' >
+              <div className="col-md-4 d-flex justify-content-center  homecarmaincard">
+                <div className='homecarcard ' >
                   <img src="https://tse3.mm.bing.net/th/id/OIP.l9bZFUj96uX7vw8YQuUcqgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" className='w-100' />
                 </div>
                 {/* card that appears only when we mouse hover on it */}
-                <div className=' homecarhovercard  '>
-                  <div className='homecarhovercard1'>
-                    <img src="https://ak6.picdn.net/shutterstock/videos/1374016/thumb/6.jpg" alt="" className='w-100' />
-                  </div>
-                  <div className='homecarhovercard2'>
-                     <h3>View car Details</h3>
-                     <div>
-                      <button id='  homecarhovercard2btn'>hi</button>
-                      <button id='  homecarhovercard2btn '>hi</button>
-                     </div>
+                <div className='homecarhovercard d-flex jyustify-content-center align-items-center'>
+                  <h2>hellow</h2>
+                  <div className='d-flex justify-content-center'>
+                     <button className='homecarhovercardbtns   '>
+2
+                     </button>
                   </div>
 
                 </div>
