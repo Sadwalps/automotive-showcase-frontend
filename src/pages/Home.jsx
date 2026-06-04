@@ -1,8 +1,9 @@
 import React from 'react'
 import Header from '../components/Header'
 import Carousel from 'react-bootstrap/Carousel';
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp, faMaximize } from '@fortawesome/free-solid-svg-icons';
+import Viewimagemodal from '../components/Viewimagemodal';
 function Home() {
   return (
     <>
@@ -52,17 +53,18 @@ function Home() {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="row">
-              <div className="col-md-4 d-flex justify-content-center  homecarmaincard">
+              <div className="col-md-4 d-flex justify-content-center   homecarmaincard">
                 <div className='homecarcard ' >
                   <img src="https://tse3.mm.bing.net/th/id/OIP.l9bZFUj96uX7vw8YQuUcqgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" className='w-100' />
                 </div>
                 {/* card that appears only when we mouse hover on it */}
-                <div className='homecarhovercard d-flex jyustify-content-center align-items-center'>
-                  <h2>hellow</h2>
-                  <div className='d-flex justify-content-center'>
-                     <button className='homecarhovercardbtns   '>
-2
-                     </button>
+                <div className='homecarhovercard d-flex    flex-column justify-content-center align-items-center'>
+            
+                  <div className='d-flex justify-content-center gap-3'>
+                    <Viewimagemodal/>
+                    <button className='homecarhovercardbtns  px-2 py-1 fs-lg-4  fs-5'>
+                      <FontAwesomeIcon icon={faAngleUp} />
+                    </button>
                   </div>
 
                 </div>

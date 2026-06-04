@@ -48,21 +48,48 @@
 
 .homecarmaincard{
     position: relative;
+   
 }
-.homecarhovercard{
+.homecarmaincard:hover img{
+    opacity: 0.6;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+.homecarmaincard .homecarhovercard{
     position: absolute;
-    top: 1px;
+    top: 35%;
+    visibility: hidden;
+  
 }
+.homecarmaincard:hover .homecarhovercard{
+    visibility: visible;
+    transition-duration: .3s;
+}
+
 .homecarhovercardbtns{
     background-color: red;
     color: white;
-    border-color: red;
+    border-color: white;
     border-style: solid;
     border-width: 2px;
     border-radius: 50%;
-    padding-right: 20px;
-    padding-left: 5px;
+    font-weight: bold;
+    transition-duration: .2s;
 }
+
+.homecarhovercardbtns:hover{
+    background-color: white;
+    color: red;
+   
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+    font-weight: bold;
+    transition-duration: .2s;
+}
+
+
+
 
 
 
