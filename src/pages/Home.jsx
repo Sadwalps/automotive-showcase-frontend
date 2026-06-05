@@ -2,11 +2,12 @@ import React from 'react'
 import Header from '../components/Header'
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleUp, faMaximize } from '@fortawesome/free-solid-svg-icons';
+import { faAngleUp, faCar, faFire, faFlag, faMaximize, faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import Viewimagemodal from '../components/Viewimagemodal';
 function Home() {
   return (
     <>
+      {/* section 1 */}
       <div style={{ position: "sticky", top: "1px", zIndex: "2" }}>
         <Header />
       </div>
@@ -59,9 +60,9 @@ function Home() {
                 </div>
                 {/* card that appears only when we mouse hover on it */}
                 <div className='homecarhovercard d-flex    flex-column justify-content-center align-items-center'>
-            
+
                   <div className='d-flex justify-content-center gap-3'>
-                    <Viewimagemodal/>
+                    <Viewimagemodal />
                     <button className='homecarhovercardbtns  px-2 py-1 fs-lg-4  fs-5'>
                       <FontAwesomeIcon icon={faAngleUp} />
                     </button>
@@ -76,6 +77,46 @@ function Home() {
           <div className="col-md-2"></div>
         </div>
 
+      </div>
+
+      {/* section 3 */}
+      <div className='mt-lg-5 mt-3 mb-lg-5 mb-3 pt-lg-5 pt-3 pb-lg-5 pb-2 container-fluid ' style={{ backgroundColor: "rgb(230, 226, 226)" }}>
+        <div className="row">
+          <div className="col-md-1"></div>
+          <div className="col-md-10">
+            {/* row for the contents */}
+            <div className="row">
+              <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
+                <FontAwesomeIcon icon={faSquarePollHorizontal} className='fa-4x mb-2' />
+                <h2 className='' style={{ fontWeight: "bold" }}>
+                  Result Driven
+                </h2>
+                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+              </div>
+              <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
+                <FontAwesomeIcon icon={faCar} className='fa-4x  mb-2' />
+                <h2 className='' style={{ fontWeight: "bold" }}>
+                  Proven Technology
+                </h2>
+                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+              </div>
+              <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
+                <FontAwesomeIcon icon={faFlag} className='fa-4x  mb-2' />
+                <h2 className='' style={{ fontWeight: "bold" }}>
+                  Winning Culture
+                </h2>
+                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+              </div>
+              <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
+                <FontAwesomeIcon icon={faFire} className='fa-4x  mb-2' />
+                <h2 className='' style={{ fontWeight: "bold" }}>
+                  Top Performance
+                </h2>
+                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-1"></div></div>
       </div>
     </>
   )
