@@ -48,19 +48,20 @@
 
 .homecarmaincard{
     position: relative;
-   
 }
+
 .homecarmaincard:hover img{
     opacity: 0.6;
     cursor: pointer;
     transition-duration: .2s;
 }
+
 .homecarmaincard .homecarhovercard{
     position: absolute;
     top: 35%;
     visibility: hidden;
-  
 }
+
 .homecarmaincard:hover .homecarhovercard{
     visibility: visible;
     transition-duration: .3s;
@@ -79,8 +80,7 @@
 
 .homecarhovercardbtns:hover{
     background-color: white;
-    color: rgb(217, 215, 215);
-   
+    color: red;
     border-style: solid;
     border-width: 2px;
     border-radius: 50%;
@@ -88,11 +88,20 @@
     transition-duration: .2s;
 }
 
+.featurelogos:hover{
+    color: red;
+    transition-duration: .2s;
+}
+
+/* Footer */
+.footerlinks:hover{
+    color: red;
+    cursor:pointer;
+    transition-duration: .2s;
+}
 
 
-
-
-
+/* media queries */
 @media screen and (max-width:706px){
     .carouselmainheading{
         font-size: 20px;

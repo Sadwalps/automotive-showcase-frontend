@@ -4,6 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp, faCar, faFire, faFlag, faMaximize, faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import Viewimagemodal from '../components/Viewimagemodal';
+import Footer from '../components/Footer';
 function Home() {
   return (
     <>
@@ -85,30 +86,30 @@ function Home() {
           <div className="col-md-1"></div>
           <div className="col-md-10">
             {/* row for the contents */}
-            <div className="row">
+            <div className="row lg-mt-5 lg-mb-5 mt-1 mb-1 pt-lg-4 pt-1 pb-lg-4 pb-1">
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
-                <FontAwesomeIcon icon={faSquarePollHorizontal} className='fa-4x mb-2' />
+                <FontAwesomeIcon icon={faSquarePollHorizontal} className='fa-4x mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Result Driven
                 </h2>
                 <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
               </div>
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
-                <FontAwesomeIcon icon={faCar} className='fa-4x  mb-2' />
+                <FontAwesomeIcon icon={faCar} className='fa-4x  mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Proven Technology
                 </h2>
                 <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
               </div>
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
-                <FontAwesomeIcon icon={faFlag} className='fa-4x  mb-2' />
+                <FontAwesomeIcon icon={faFlag} className='fa-4x  mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Winning Culture
                 </h2>
                 <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
               </div>
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
-                <FontAwesomeIcon icon={faFire} className='fa-4x  mb-2' />
+                <FontAwesomeIcon icon={faFire} className='fa-4x  mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Top Performance
                 </h2>
@@ -118,6 +119,8 @@ function Home() {
           </div>
           <div className="col-md-1"></div></div>
       </div>
+
+      < Footer/>
     </>
   )
 }
