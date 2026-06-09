@@ -100,6 +100,14 @@
     transition-duration: .2s;
 }
 
+/* car details page */
+.cardetailsherosection{
+    background-image: url(https://images.stockcake.com/public/f/7/8/f78b2ee3-a40d-4a42-b740-dd9bfc4c46fb_large/sunset-cityscape-view-stockcake.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+}
+
 
 /* media queries */
 @media screen and (max-width:706px){

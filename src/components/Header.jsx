@@ -3,14 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Link } from 'react-router-dom';
 function Header() {
   return (
     <>
-    
-      <div   style={{ background: "grey"}}>
+      <div style={{ background: "grey" }}>
         <Navbar expand="lg" className="py-3">
           <Container>
-            <Navbar.Brand href="#home" className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
+            <Navbar.Brand href="/" className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
@@ -19,11 +19,9 @@ function Header() {
                   <Dropdown.Toggle id='navlinks' className='border-0 mt-1 rounded-0 w-100 ' >
                     Pages
                   </Dropdown.Toggle>
-
-                  <Dropdown.Menu className=''style={{ background: "grey", opacity: "30px", border:"0px"}} >
-                    <Dropdown.Item href="#/action-1" id='dropdownoptions'>All Cars</Dropdown.Item>
+                  <Dropdown.Menu className='' style={{ background: "grey", opacity: "30px", border: "0px" }} >
+                    <Link to={'/cardetails'}><Dropdown.Item href="#/action-1" id='dropdownoptions'>All Cars</Dropdown.Item></Link>
                     <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item>
-                    
                   </Dropdown.Menu>
                 </Dropdown>
                 <button id='navlinks' className='btn border-0 mt-1 rounded-0 ' >Add Cars</button>
@@ -32,7 +30,6 @@ function Header() {
           </Container>
         </Navbar>
       </div>
-     
     </>
   )
 }

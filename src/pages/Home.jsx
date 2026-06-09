@@ -92,28 +92,28 @@ function Home() {
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Result Driven
                 </h2>
-                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+                <p className='text-center'>Engineered to deliver outstanding performance, percision, and reliability on every journey.Build to achieve expectional results whether on city roads or open highways. </p>
               </div>
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
                 <FontAwesomeIcon icon={faCar} className='fa-4x  mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Proven Technology
                 </h2>
-                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+                <p className='text-center'>Equipped with advanced automotive technology tested for safety, efficiency, and durability. Every feature is designed to enhance the driving experience and ensure dependable performance.</p>
               </div>
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
                 <FontAwesomeIcon icon={faFlag} className='fa-4x  mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Winning Culture
                 </h2>
-                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+                <p className='text-center'>Created with a legacy of innovation, excellence, and a passion for driving. Designed to inspire confidence and set new standards in the automotive world.</p>
               </div>
               <div className="col-lg-3 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column mt-2">
                 <FontAwesomeIcon icon={faFire} className='fa-4x  mb-2 featurelogos' />
                 <h2 className='' style={{ fontWeight: "bold" }}>
                   Top Performance
                 </h2>
-                <p className='text-center'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, recusandae ea! Odit facilis harum nostrum at incidunt, totam rem deleniti.</p>
+                <p className='text-center'>Powered to provide impressive speed, responsive handling, and smooth acceleration. Built for drivers who demand exceptional performance without compromising comfort.</p>
               </div>
             </div>
           </div>
