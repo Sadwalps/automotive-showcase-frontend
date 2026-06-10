@@ -102,18 +102,18 @@
 
 /* car details page */
 .cardetailsherosection{
-    background-image: url(https://images.stockcake.com/public/f/7/8/f78b2ee3-a40d-4a42-b740-dd9bfc4c46fb_large/sunset-cityscape-view-stockcake.jpg);
+    background-image: url(https://tse4.mm.bing.net/th/id/OIP.iR8Y9E6_D0stL73B6vOnVQHaCq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);
     background-repeat: no-repeat;
     background-size: cover;
     height: 50vh;
 }
-
 
 /* media queries */
 @media screen and (max-width:706px){
     .carouselmainheading{
         font-size: 20px;
     }
+
     .carouselimage2{
          background-image: url(https://www.jamesedition.com/stories/wp-content/uploads/2020/07/cent2.png);
     }
@@ -122,5 +122,10 @@
     }  
     .carouselimage3{
         background-image: url(https://wallpaperaccess.com/full/8982230.jpg);
+    }
+    .cardetailsherosection{
+        background-image: url(https://i.pinimg.com/originals/fe/5b/68/fe5b68c7e89a68fd38996b8afc0a6230.jpg
+);
+
     }
 }
