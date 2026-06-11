@@ -14,7 +14,8 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
-                <div id='navlinks'>Home</div>
+                <Link to={'/'}><div id='navlinks' >Home</div>
+                </Link>
                 <Dropdown>
                   <Dropdown.Toggle id='navlinks' className='border-0 mt-1 rounded-0 w-100 ' >
                     Pages
