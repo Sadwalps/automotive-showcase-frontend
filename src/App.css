@@ -109,7 +109,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 50vh;
-    
+
 }
 
 .cardetailsbuttons {
@@ -131,7 +131,27 @@
     border-color: red;
 }
 
+.singlecardetailsherosection {
+    background-image: url(https://img.freepik.com/premium-photo/black-modern-sport-car-closeup-black-background-generative-ai_840300-5219.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+}
+
+.singlecardetailstext {
+    font-size: xx-large;
+}
+.singlecardetailstext2 {
+    font-size: 20px;
+}
+
 /* media queries */
+@media screen and (max-width:991px) {
+    .singlecardetailstext {
+        font-size: x-large;
+    }
+}
+
 @media screen and (max-width:706px) {
     .carouselmainheading {
         font-size: 20px;
@@ -148,4 +168,11 @@
     .carouselimage3 {
         background-image: url(https://wallpaperaccess.com/full/8982230.jpg);
     }
+
+    .singlecardetailstext {
+        font-size: large;
+    }
+    .singlecardetailstext2 {
+    font-size: 15px;
+}
 }
