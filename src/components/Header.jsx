@@ -14,14 +14,14 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
-                <Link to={'/'}><div id='navlinks' >Home</div>
+                <Link to={'/'} style={{ textDecoration: "none" }}><div id='navlinks' >Home</div>
                 </Link>
                 <Dropdown>
                   <Dropdown.Toggle id='navlinks' className='border-0 mt-1 rounded-0 w-100 ' >
                     Pages
                   </Dropdown.Toggle>
                   <Dropdown.Menu className='' style={{ background: "grey", opacity: "30px", border: "0px" }} >
-                    <Link to={'/cardetails'}><Dropdown.Item href="#/action-1" id='dropdownoptions'>All Cars</Dropdown.Item></Link>
+                    <Link to={'/cardetails'} style={{ textDecoration: "none" }}><Dropdown.Item href="#/action-1" id='dropdownoptions'>All Cars</Dropdown.Item></Link>
                     <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
