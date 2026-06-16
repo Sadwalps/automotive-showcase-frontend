@@ -5,22 +5,19 @@ import Modal from 'react-bootstrap/Modal';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-function Cardetails() {
+function Favorites() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
         <>
             <Header />
-            <div className='cardetailsherosection d-flex justify-content-center align-items-center' style={{}}>
+            <div className='favoritecardetailsherosection d-flex justify-content-center align-items-center' style={{}}>
                 <div className="container-fluid ">
                     <div className="row">
                         <div className="col-8  ps-2 text-light" style={{ fontWeight: "bold" }}>
-                            <h1 className=' ps-lg-5 ps-2'>All Cars</h1>
-                            <h3 className='ps-lg-5 ps-2'>Search your favorate cars</h3>
+                            <h1 className=' ps-lg-5 ps-2'>Favorite Cars</h1>
+                            <h3 className='ps-lg-5 ps-2'>Cars that you liked the most</h3>
                         </div>
                         <div className="col-4">
                         </div>
@@ -42,11 +39,7 @@ function Cardetails() {
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <button onClick={handleShow} className='cardetailsbuttons'>View image</button>
-                                        <button className='btn p-1  ' id='likebtn' >
-                                            <FontAwesomeIcon icon={faHeart} />
-                                        </button>
                                         <Link to={'/singlecardetails'}>
-
                                             <button className='cardetailsbuttons'>View details</button></Link>
                                     </div>
                                 </Card>
@@ -102,4 +95,4 @@ function Cardetails() {
     )
 }
 
-export default Cardetails
+export default Favorites

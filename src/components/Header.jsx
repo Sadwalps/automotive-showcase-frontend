@@ -22,7 +22,7 @@ function Header() {
                   </Dropdown.Toggle>
                   <Dropdown.Menu className='' style={{ background: "grey", opacity: "30px", border: "0px" }} >
                     <Link to={'/cardetails'} style={{ textDecoration: "none" }}><Dropdown.Item href="#/action-1" id='dropdownoptions'>All Cars</Dropdown.Item></Link>
-                    <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item>
+                  <Link to={'/favoritecardetails'} style={{ textDecoration: "none" }}>  <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item></Link>
                   </Dropdown.Menu>
                 </Dropdown>
                 <button id='navlinks' className='btn border-0 mt-1 rounded-0 ' >Add Cars</button>
