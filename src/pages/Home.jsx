@@ -5,7 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp, faCar, faFire, faFlag, faMaximize, faSquarePollHorizontal } from '@fortawesome/free-solid-svg-icons';
 import Viewimagemodal from '../components/Viewimagemodal';
 import Footer from '../components/Footer';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 function Home() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       {/* section 1 */}
@@ -22,7 +29,7 @@ function Home() {
             <Carousel.Caption style={{ textAlign: "top" }}>
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              <button className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button>
+              <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button>
             </Carousel.Caption>
           </Carousel.Item>
           {/* carousel item 2 */}
@@ -32,7 +39,7 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Built for Car Lovers</h5>
               <h6 className='carouselsubheading'>Browse iconic cars, compare performance, and save the ones you love</h6>
-              <button className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button>
+              <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button>
             </Carousel.Caption>
           </Carousel.Item>
           {/* carousel item 3 */}
@@ -43,10 +50,38 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              <button className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button>
+              <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+
+        {/* modal for add car details (for admins) */}
+        <Modal show={show} onHide={handleClose} className='m-0' size='lg' centered>
+          <Modal.Header closeButton className='bg-dark w-100'>
+            <Modal.Title className='text-light w-100'><h2 className='text-center'>Add Car Details</h2></Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='bg-dark'>
+            <input type="text" className='form-control py-lg-2 py-1 text-center' placeholder='Car Name' />
+            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Brand' />
+            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Category' />
+            <div>
+              <div className="row">
+                <div className="col-lg-6 col-md-6 col-12"> <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Horsepower' /></div>
+                <div className="col-lg-6 col-md-6 col-12"> <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Top Speed' /></div>
+              </div>
+            </div>
+            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Engine' />
+            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Image Url' />
+          </Modal.Body>
+          <Modal.Footer className='bg-dark'>
+            <Button variant="secondary" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button variant="light" onClick={handleClose}>
+              Add
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
 
       {/* section 2 */}
@@ -120,7 +155,7 @@ function Home() {
           <div className="col-md-1"></div></div>
       </div>
 
-      < Footer/>
+      < Footer />
     </>
   )
 }

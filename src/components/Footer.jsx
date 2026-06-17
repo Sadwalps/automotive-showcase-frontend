@@ -17,9 +17,9 @@ function Footer() {
                     {/* column 2 */}
                     <div className="col-lg-2 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column">
                         <h3 style={{ fontWeight: "bold" }}>Quick Links</h3>
-                        <ul className='ps-0 d-flex justify-content-center align-items-center flex-column' style={{ listStyleType: "none" }}> <Link to={'/'} style={{ textDecoration: "none", color:"white" }}><li className='footerlinks'>Home</li></Link>
-                            <Link to={'/cardetails'} style={{ textDecoration: "none", color:"white" }}> <li className='footerlinks' >All Cars</li></Link>
-                            <Link to={'/favoritecardetails'} style={{ textDecoration: "none" , color:"white" }}>  <li className='footerlinks'>Favorites</li></Link></ul>
+                        <ul className='ps-0 d-flex justify-content-center align-items-center flex-column' style={{ listStyleType: "none" }}> <Link to={'/'} style={{ textDecoration: "none", color: "white" }}><li className='footerlinks'>Home</li></Link>
+                            <Link to={'/cardetails'} style={{ textDecoration: "none", color: "white" }}> <li className='footerlinks' >All Cars</li></Link>
+                            <Link to={'/favoritecardetails'} style={{ textDecoration: "none", color: "white" }}>  <li className='footerlinks'>Favorites</li></Link></ul>
                     </div>
 
                     {/* column 3 */}
