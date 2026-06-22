@@ -6,6 +6,7 @@ import Cardetails from './pages/Cardetails'
 import Singlecardetails from './components/Singlecardetails'
 import Favorites from './pages/Favorites'
 import Pagenotfound from './pages/Pagenotfound'
+import Userrole from './pages/Userrole'
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <Route path='/cardetails' element={<Cardetails />} />
         <Route path='/singlecardetails' element={<Singlecardetails />} />
         <Route path='/favoritecardetails' element={<Favorites />} />
-        <Route path='*' element={<Pagenotfound />} />
+        <Route path='/userrole' element={<Userrole />} />
+         <Route path='*' element={<Pagenotfound />} />
       </Routes>
     </>
   )

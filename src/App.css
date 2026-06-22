@@ -180,6 +180,14 @@
     font-weight: bold;
 }
 
+/* user role page */
+.userrolepage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 /* favorite car details page */
 
 /* media queries */
