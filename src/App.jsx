@@ -7,6 +7,7 @@ import Singlecardetails from './components/Singlecardetails'
 import Favorites from './pages/Favorites'
 import Pagenotfound from './pages/Pagenotfound'
 import Userrole from './pages/Userrole'
+import Auth from './pages/Auth'
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
         <Route path='/singlecardetails' element={<Singlecardetails />} />
         <Route path='/favoritecardetails' element={<Favorites />} />
         <Route path='/userrole' element={<Userrole />} />
-         <Route path='*' element={<Pagenotfound />} />
+        <Route path='/signup' element={<Auth />} />
+        <Route path='*' element={<Pagenotfound />} />
       </Routes>
     </>
   )
