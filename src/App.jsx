@@ -19,7 +19,8 @@ function App() {
         <Route path='/singlecardetails' element={<Singlecardetails />} />
         <Route path='/favoritecardetails' element={<Favorites />} />
         <Route path='/userrole' element={<Userrole />} />
-        <Route path='/signup' element={<Auth />} />
+        <Route path='/signup' element={<Auth signup={true} />}  />
+         <Route path='/login' element={<Auth />} />
         <Route path='*' element={<Pagenotfound />} />
       </Routes>
     </>
