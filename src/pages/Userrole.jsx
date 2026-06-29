@@ -14,14 +14,14 @@ function Userrole() {
                         <h1 className='text-light text-center mb-5' style={{ fontWeight: "bold", fontFamily: "fangsong" }} >Select Your Role</h1>
                         <div className='container-fluid'>
                             <div className="row ">
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-12 d-flex  justify-content-center mt-1"><Link to={'/signup'} style={{textDecoration:"none"}}> <button className='d-flex flex-column btn btn-warning p-lg-4 p-2'>
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-12 d-flex  justify-content-center mt-1"><Link to={'/adminsignup'} style={{textDecoration:"none"}}> <button className='d-flex flex-column btn btn-warning p-lg-4 p-2'>
                                     <FontAwesomeIcon icon={faBlackTie} className='fa-6x' />
                                     <h2>Admin</h2>
                                 </button></Link></div>
-                                <div className="col-lg-6 col-md-6 col-sm-6 col-12 d-flex  justify-content-center mt-lg-1 mt-md-1 mt-sm-1 mt-4" > <button className='d-flex flex-column btn btn-info p-lg-4 p-2 '>
+                                <div className="col-lg-6 col-md-6 col-sm-6 col-12 d-flex  justify-content-center mt-lg-1 mt-md-1 mt-sm-1 mt-4" > <Link to={'/usersignup'} style={{textDecoration:"none"}}><button className='d-flex flex-column btn btn-info p-lg-4 p-2 '>
                                     <FontAwesomeIcon icon={faUser} className='fa-6x ' />
                                     <h2>User</h2>
-                                </button></div>
+                                </button></Link></div>
                             </div>
                         </div>
                     </div>

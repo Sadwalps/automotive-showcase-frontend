@@ -19,8 +19,10 @@ function App() {
         <Route path='/singlecardetails' element={<Singlecardetails />} />
         <Route path='/favoritecardetails' element={<Favorites />} />
         <Route path='/userrole' element={<Userrole />} />
-        <Route path='/signup' element={<Auth signup={true} />}  />
-         <Route path='/login' element={<Auth />} />
+        <Route path='/adminsignup' element={<Auth signup={true} admin={true} />}  />
+        <Route path='/usersignup' element={<Auth signup={true} />}  />
+         <Route path='/adminlogin' element={<Auth admin={true} />} />
+         <Route path='/userlogin' element={<Auth />} />
         <Route path='*' element={<Pagenotfound />} />
       </Routes>
     </>
