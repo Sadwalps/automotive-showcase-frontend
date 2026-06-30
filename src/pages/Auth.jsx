@@ -20,6 +20,51 @@ function Auth({ signup, admin }) {
         })
     }
 
+    // admin signup
+    const handleadminsignup = () => {
+        const { username, email, password } = authdetails
+        console.log(username, email, password);
+        if (!username || !email || !password) {
+            alert(`Fill the form completely`)
+        } else {
+            alert(`a Signup successfull`)
+        }
+    }
+
+    //admin login
+    const handleadminlogin = () => {
+        const { email, password } = authdetails
+        console.log(email, password);
+        if (!email || !password) {
+            alert(`Fill the form completely`)
+        } else {
+            alert(`a login successfull`)
+        }
+    }
+
+    //user signup
+    const handleusersignup = () => {
+        const { username, email, password } = authdetails
+        console.log(username, email, password);
+        if (!username || !email || !password) {
+            alert(`Fill the form completely`)
+        } else {
+            alert(`u Signup successfull`)
+        }
+    }
+
+    //user login
+     const handleuserlogin = () => {
+        const { email, password } = authdetails
+        console.log(email, password);
+        if (!email || !password) {
+            alert(`Fill the form completely`)
+        } else {
+            alert(`u login successfull`)
+        }
+    }
+
+
     return (
 
         <>
@@ -76,10 +121,10 @@ function Auth({ signup, admin }) {
 
                         {/* signup/login butons */}
                         {signup ? <div>
-                            {admin ? <button className='btn btn-warning'>Signup</button> :
-                                <button className='btn btn-info'>Signup</button>} <button onClick={handleCancel} className='btn btn-danger ' style={{ float: "right" }} >Cancel</button></div> :
-                            <div>{admin ? <button className='btn btn-warning'>Login</button> :
-                                <button className='btn btn-info'>Login</button>} <button onClick={handleCancel} className='btn btn-danger ' style={{ float: "right" }} >Cancel</button></div>}
+                            {admin ? <button onClick={handleadminsignup} className='btn btn-warning'>Signup</button> :
+                                <button onClick={handleusersignup} className='btn btn-info'>Signup</button>} <button onClick={handleCancel} className='btn btn-danger ' style={{ float: "right" }} >Cancel</button></div> :
+                            <div>{admin ? <button onClick={handleadminlogin} className='btn btn-warning'>Login</button> :
+                                <button onClick={handleuserlogin} className='btn btn-info'>Login</button>} <button onClick={handleCancel} className='btn btn-danger ' style={{ float: "right" }} >Cancel</button></div>}
 
                         {/* links */}
                         {signup ? <div>{admin ? <h5 className='text-light mt-3'>Already have an account <Link to={'/adminlogin'} className='text-warning'>Login</Link> </h5> :
