@@ -1,7 +1,7 @@
 import { commonApi } from "./commonApi"
 import { serverUrl } from "./serverUrl"
 
-//Api to add car details
-// export const addCarApi = async (reqBody) => {
-//     return await commonApi(`Post` `${serverUrl}/cars`, reqBody)
-// }
+//Api for admin signup
+export const adminsignupApi = async (reqBody) => {
+    return await commonApi('POST', `${serverUrl}/admin`, reqBody)
+}

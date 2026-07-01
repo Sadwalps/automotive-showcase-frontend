@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link } from 'react-router-dom';
+import { adminsignupApi } from '../service/allApi';
 function Auth({ signup, admin }) {
     const [authdetails, setAuthdetails] = useState({
         username: "",
@@ -21,13 +22,19 @@ function Auth({ signup, admin }) {
     }
 
     // admin signup
-    const handleadminsignup = () => {
+    const handleadminsignup = async () => {
         const { username, email, password } = authdetails
         console.log(username, email, password);
         if (!username || !email || !password) {
             alert(`Fill the form completely`)
         } else {
-            alert(`a Signup successfull`)
+            const result = await adminsignupApi({ username, email, password })
+            if (result.status >= 200 && result.status < 300) {
+                alert(`a Signup successfull`)
+            } else {
+                alert(`Something went wrong`)
+            }
+
         }
     }
 
@@ -54,7 +61,7 @@ function Auth({ signup, admin }) {
     }
 
     //user login
-     const handleuserlogin = () => {
+    const handleuserlogin = () => {
         const { email, password } = authdetails
         console.log(email, password);
         if (!email || !password) {
