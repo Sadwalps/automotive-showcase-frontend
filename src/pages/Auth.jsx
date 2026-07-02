@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { Link } from 'react-router-dom';
-import { adminsignupApi } from '../service/allApi';
+import { Link, useNavigate } from 'react-router-dom';
+import { adminloginApi, adminsignupApi } from '../service/allApi';
 function Auth({ signup, admin }) {
+    const navigate = useNavigate()
     const [authdetails, setAuthdetails] = useState({
         username: "",
         email: "",
@@ -31,6 +32,9 @@ function Auth({ signup, admin }) {
             const result = await adminsignupApi({ username, email, password })
             if (result.status >= 200 && result.status < 300) {
                 alert(`a Signup successfull`)
+                setTimeout(() => {
+                    navigate('/adminlogin')
+                }, 1000)
             } else {
                 alert(`Something went wrong`)
             }
@@ -39,13 +43,27 @@ function Auth({ signup, admin }) {
     }
 
     //admin login
-    const handleadminlogin = () => {
+    const handleadminlogin = async () => {
         const { email, password } = authdetails
         console.log(email, password);
         if (!email || !password) {
             alert(`Fill the form completely`)
         } else {
-            alert(`a login successfull`)
+            try {
+                const result = await adminloginApi(email, password)
+                if (result.status == 200) {
+                    if (result.data.length > 0) {
+                        alert(`a login successfull`)
+                        sessionStorage.setItem("admin", JSON.stringify(result.data[0]))
+                        navigate('/')
+                    } else {
+                        alert(`Something went wrong`)
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+                alert(`Server connection failed`)
+            }
         }
     }
 

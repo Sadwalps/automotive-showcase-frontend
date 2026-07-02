@@ -21,6 +21,7 @@ function Home() {
         <Header />
       </div>
       <div className='text-primary fs-1' style={{}}>
+     
 
         <Carousel >
           {/* carousel item 1 */}
@@ -28,6 +29,7 @@ function Home() {
             <div className='carouselimage1'>
             </div>
             <Carousel.Caption style={{ textAlign: "top" }}>
+                 
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
               <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button>
