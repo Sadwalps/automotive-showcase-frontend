@@ -55,6 +55,7 @@ function Auth({ signup, admin }) {
                     if (result.data.length > 0) {
                         alert(`a login successfull`)
                         sessionStorage.setItem("admin", JSON.stringify(result.data[0]))
+                        sessionStorage.setItem("role", "admin")
                         navigate('/')
                     } else {
                         alert(`Something went wrong`)

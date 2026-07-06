@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Link } from 'react-router-dom';
-function Header() {
+import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+function Header({setRole}) {
+  const navigate = useNavigate()
+  
+ 
+ const [loginresponse, setLoginresponse] =useState("")
+  
+
+  const handlelogout = () => {
+    sessionStorage.clear()
+    alert(`Logout successfull`)
+   
+      navigate('/')
+      setRole("")
+   
+  }
+
+  useEffect(() => {
+    if (sessionStorage.getItem("role")) {
+      setRole(sessionStorage.getItem("role"))
+      setLoginresponse(sessionStorage.getItem("role"))
+    }
+  }, [loginresponse])
   return (
     <>
       <div style={{ background: "grey" }}>
@@ -25,7 +48,9 @@ function Header() {
                     <Link to={'/favoritecardetails'} style={{ textDecoration: "none" }}>  <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item></Link>
                   </Dropdown.Menu>
                 </Dropdown>
-                <button id='navlinks' className='btn border-0 mt-1 rounded-0 ' >Add Cars</button>
+                <button id='navlinks' className='btn border-0 mt-1 rounded-0 '>Add Cars</button>
+
+               {loginresponse&& <button onClick={handlelogout} id='navlinks' className='btn border-0 mt-1 rounded-0'><FontAwesomeIcon icon={faPowerOff} style={{ fontSize: "17px" }} /></button>}
               </Nav>
             </Navbar.Collapse>
           </Container>
