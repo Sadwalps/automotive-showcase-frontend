@@ -6,28 +6,26 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
-function Header({setRole}) {
+import { useContext } from 'react';
+import { loginResponseContext } from '../context/ContextShare';
+function Header() {
   const navigate = useNavigate()
-  
- 
- const [loginresponse, setLoginresponse] =useState("")
-  
+  const { setLoginResponse } = useContext(loginResponseContext)
+  const [role, setRole] = useState("")
 
   const handlelogout = () => {
     sessionStorage.clear()
     alert(`Logout successfull`)
-   
-      navigate('/')
-      setRole("")
-   
+    setLoginResponse(false)
+    navigate('/')
   }
 
   useEffect(() => {
     if (sessionStorage.getItem("role")) {
       setRole(sessionStorage.getItem("role"))
-      setLoginresponse(sessionStorage.getItem("role"))
     }
-  }, [loginresponse])
+  })
+
   return (
     <>
       <div style={{ background: "grey" }}>
@@ -50,7 +48,7 @@ function Header({setRole}) {
                 </Dropdown>
                 <button id='navlinks' className='btn border-0 mt-1 rounded-0 '>Add Cars</button>
 
-               {loginresponse&& <button onClick={handlelogout} id='navlinks' className='btn border-0 mt-1 rounded-0'><FontAwesomeIcon icon={faPowerOff} style={{ fontSize: "17px" }} /></button>}
+               {role && <button onClick={handlelogout} id='navlinks' className='btn border-0 mt-1 rounded-0'><FontAwesomeIcon icon={faPowerOff} style={{ fontSize: "17px" }} /></button>}
               </Nav>
             </Navbar.Collapse>
           </Container>

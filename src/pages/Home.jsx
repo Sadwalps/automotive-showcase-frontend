@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Header from '../components/Header'
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,9 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
+import { loginResponseContext } from '../context/ContextShare';
 function Home() {
+  const { loginResponse } = useContext(loginResponseContext)
   const [show, setShow] = useState(false);
 const [role, setRole] = useState("")
   const handleClose = () => setShow(false);
@@ -19,7 +21,7 @@ const [role, setRole] = useState("")
      if (sessionStorage.getItem("role")) {
        setRole(sessionStorage.getItem("role"))
      }
-   }, [role])
+   }, [loginResponse])
   return (
     <>
       {/* section 1 */}
