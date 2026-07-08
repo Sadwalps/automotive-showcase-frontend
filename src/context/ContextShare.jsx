@@ -6,8 +6,9 @@ function ContextShare({ children }) {
     const [loginResponse, setLoginResponse] = useState(true)
 
     return (
-        <loginResponseContext.Provider value={{ loginResponse, setLoginResponse }}>{children}</loginResponseContext.Provider>
-
+        <loginResponseContext.Provider value={{ loginResponse, setLoginResponse }}>
+            {children}
+        </loginResponseContext.Provider>
     )
 }
 

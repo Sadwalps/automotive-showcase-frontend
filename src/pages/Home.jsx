@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, {  } from 'react'
 import Header from '../components/Header'
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,24 +9,22 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
-import { loginResponseContext } from '../context/ContextShare';
+
+
 function Home() {
-  const { loginResponse } = useContext(loginResponseContext)
+  
+  
   const [show, setShow] = useState(false);
-const [role, setRole] = useState("")
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-     if (sessionStorage.getItem("role")) {
-       setRole(sessionStorage.getItem("role"))
-     }
-   }, [loginResponse])
+  
   return (
     <>
       {/* section 1 */}
       <div style={{ position: "sticky", top: "1px", zIndex: "2" }}>
-        <Header setRole={setRole} />
+        <Header />
       </div>
       <div className='text-primary fs-1' style={{}}>
     
@@ -39,8 +37,8 @@ const [role, setRole] = useState("")
                  
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              {role?<button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button>:
-             <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
+              <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button>
+             <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>
             </Carousel.Caption>
           </Carousel.Item>
           {/* carousel item 2 */}
@@ -50,8 +48,8 @@ const [role, setRole] = useState("")
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Built for Car Lovers</h5>
               <h6 className='carouselsubheading'>Browse iconic cars, compare performance, and save the ones you love</h6>
-             {role? <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button>:
-               <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
+              <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button>
+               <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>
             </Carousel.Caption>
           </Carousel.Item>
           {/* carousel item 3 */}
@@ -62,8 +60,8 @@ const [role, setRole] = useState("")
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              {role?<button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button>:
-               <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
+              <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button>:
+               <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

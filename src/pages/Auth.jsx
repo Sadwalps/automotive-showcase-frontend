@@ -1,11 +1,14 @@
 import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link, useNavigate } from 'react-router-dom';
 import { adminloginApi, adminsignupApi } from '../service/allApi';
+
+
 function Auth({ signup, admin }) {
+    
     const navigate = useNavigate()
     const [authdetails, setAuthdetails] = useState({
         username: "",
@@ -32,6 +35,7 @@ function Auth({ signup, admin }) {
             const result = await adminsignupApi({ username, email, password })
             if (result.status >= 200 && result.status < 300) {
                 alert(`a Signup successfull`)
+
                 setTimeout(() => {
                     navigate('/adminlogin')
                 }, 1000)
@@ -56,6 +60,7 @@ function Auth({ signup, admin }) {
                         alert(`a login successfull`)
                         sessionStorage.setItem("admin", JSON.stringify(result.data[0]))
                         sessionStorage.setItem("role", "admin")
+                        
                         navigate('/')
                     } else {
                         alert(`Something went wrong`)
