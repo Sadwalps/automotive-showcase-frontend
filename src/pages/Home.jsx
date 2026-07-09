@@ -1,4 +1,4 @@
-import React, {  } from 'react'
+import React, { useContext } from 'react'
 import Header from '../components/Header'
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,17 +9,13 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
-
+import { loginResponseContext } from '../context/ContextShare';
 
 function Home() {
-  
-  
+  const { loginResponse } = useContext(loginResponseContext)
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  
   return (
     <>
       {/* section 1 */}
@@ -27,18 +23,18 @@ function Home() {
         <Header />
       </div>
       <div className='text-primary fs-1' style={{}}>
-    
+
         <Carousel >
           {/* carousel item 1 */}
           <Carousel.Item interval={1000} >
             <div className='carouselimage1'>
             </div>
             <Carousel.Caption style={{ textAlign: "top" }}>
-                 
+
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button>
-             <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>
+              {loginResponse == true ? <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button> :
+                <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>
           {/* carousel item 2 */}
@@ -48,8 +44,8 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Built for Car Lovers</h5>
               <h6 className='carouselsubheading'>Browse iconic cars, compare performance, and save the ones you love</h6>
-              <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button>
-               <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>
+              {loginResponse == true ? <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button> :
+                <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>
           {/* carousel item 3 */}
@@ -60,8 +56,8 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button>:
-               <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>
+              {loginResponse == true ? <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button> :
+                <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
