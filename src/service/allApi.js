@@ -10,3 +10,8 @@ export const adminsignupApi = async (reqBody) => {
 export const adminloginApi = async(email, password)=>{
     return await commonApi('GET', `${serverUrl}/admin?email=${email}&password=${password}`,"")
 }
+
+//Api for add car details
+export const addcardetailsApi = async(reqBody)=>{
+    return await commonApi('POST', `${serverUrl}/car`, reqBody)
+}

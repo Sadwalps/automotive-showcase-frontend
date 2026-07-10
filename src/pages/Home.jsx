@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Header from '../components/Header'
 import Carousel from 'react-bootstrap/Carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,8 +14,35 @@ import { loginResponseContext } from '../context/ContextShare';
 function Home() {
   const { loginResponse } = useContext(loginResponseContext)
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const [carDetails, setCarDetails] = useState({
+    carname: "",
+    brand: "",
+    category: "",
+    horepower: "",
+    topspeed: "",
+    engine: "",
+    imgurl: ""
+  })
+  console.log(carDetails);
+
+  const handleClose = () => {
+    setShow(false);
+    handleCancel()
+  }
   const handleShow = () => setShow(true);
+
+  const handleCancel = () => {
+    setCarDetails({
+      carname: "",
+      brand: "",
+      category: "",
+      horepower: "",
+      topspeed: "",
+      engine: "",
+      imgurl: ""
+    })
+  }
+
   return (
     <>
       {/* section 1 */}
@@ -68,20 +95,20 @@ function Home() {
             <Modal.Title className='text-light w-100'><h2 className='text-center'>Add Car Details</h2></Modal.Title>
           </Modal.Header>
           <Modal.Body className='bg-dark'>
-            <input type="text" className='form-control py-lg-2 py-1 text-center' placeholder='Car Name' />
-            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Brand' />
-            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Category' />
+            <input value={carDetails.carname} onChange={(e) => setCarDetails({ ...carDetails, carname: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center' placeholder='Car Name' />
+            <input value={carDetails.brand} onChange={(e) => setCarDetails({ ...carDetails, brand: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Brand' />
+            <input value={carDetails.category} onChange={(e) => setCarDetails({ ...carDetails, category: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Category' />
             <div>
               <div className="row">
-                <div className="col-lg-6 col-md-6 col-12"> <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Horsepower' /></div>
-                <div className="col-lg-6 col-md-6 col-12"> <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Top Speed' /></div>
+                <div className="col-lg-6 col-md-6 col-12"> <input value={carDetails.horepower} onChange={(e) => setCarDetails({ ...carDetails, horepower: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Horsepower' /></div>
+                <div className="col-lg-6 col-md-6 col-12"> <input value={carDetails.topspeed} onChange={(e) => setCarDetails({ ...carDetails, topspeed: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Top Speed' /></div>
               </div>
             </div>
-            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Engine' />
-            <input type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Image Url' />
+            <input value={carDetails.engine} onChange={(e) => setCarDetails({ ...carDetails, engine: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Engine' />
+            <input value={carDetails.imgurl} onChange={(e) => setCarDetails({ ...carDetails, imgurl: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Image Url' />
           </Modal.Body>
           <Modal.Footer className='bg-dark'>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={handleCancel}>
               Cancel
             </Button>
             <Button variant="light" onClick={handleClose}>

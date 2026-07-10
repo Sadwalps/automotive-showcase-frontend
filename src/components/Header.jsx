@@ -22,15 +22,13 @@ function Header() {
     navigate('/')
     setLoginResponse(false)
   }
-  
-
 
   return (
     <>
       <div style={{ background: "grey" }}>
         <Navbar expand="lg" className="py-3">
           <Container>
-            <Navbar.Brand href="/" className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
+           <Navbar.Brand href='/' className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">

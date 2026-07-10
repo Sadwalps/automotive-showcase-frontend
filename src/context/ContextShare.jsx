@@ -3,7 +3,11 @@ import { createContext, useState } from "react";
 export const loginResponseContext = createContext({})
 
 function ContextShare({ children }) {
-    const [loginResponse, setLoginResponse] = useState(false)
+    const [loginResponse, setLoginResponse] = useState(() => {
+        const adminData = sessionStorage.getItem('admin');
+        return adminData ? true : false;
+    })
+
 
     return (
         <loginResponseContext.Provider value={{ loginResponse, setLoginResponse }}>
