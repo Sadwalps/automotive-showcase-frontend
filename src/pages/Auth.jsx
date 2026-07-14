@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link, useNavigate } from 'react-router-dom';
-import { adminloginApi, adminsignupApi } from '../service/allApi';
+import { adminloginApi, adminsignupApi, usersignupApi } from '../service/allApi';
 import { loginResponseContext } from '../context/ContextShare';
 
 function Auth({ signup, admin }) {
@@ -73,13 +73,21 @@ function Auth({ signup, admin }) {
     }
 
     //user signup
-    const handleusersignup = () => {
+    const handleusersignup = async() => {
         const { username, email, password } = authdetails
         console.log(username, email, password);
         if (!username || !email || !password) {
             alert(`Fill the form completely`)
         } else {
-            alert(`u Signup successfull`)
+             const result = await usersignupApi({ username, email, password })
+            if (result.status >= 200 && result.status < 300) {
+                alert(`u Signup successfull`)
+                setTimeout(() => {
+                    navigate('/userlogin')
+                }, 1000)
+            } else {
+                alert(`Something went wrong`)
+            } 
         }
     }
 

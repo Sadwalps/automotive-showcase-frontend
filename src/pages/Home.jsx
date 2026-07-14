@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 import { loginResponseContext } from '../context/ContextShare';
+import { addcardetailsApi } from '../service/allApi';
 
 function Home() {
   const { loginResponse } = useContext(loginResponseContext)
@@ -18,7 +19,7 @@ function Home() {
     carname: "",
     brand: "",
     category: "",
-    horepower: "",
+    horsepower: "",
     topspeed: "",
     engine: "",
     imgurl: ""
@@ -36,11 +37,31 @@ function Home() {
       carname: "",
       brand: "",
       category: "",
-      horepower: "",
+      horsepower: "",
       topspeed: "",
       engine: "",
       imgurl: ""
     })
+  }
+
+  const handleAdd = async () => {
+    const { carname, brand, category, horsepower, topspeed, engine, imgurl } = carDetails
+    console.log(carname, brand, category, horsepower, topspeed, engine, imgurl);
+    if (!carname || !brand || !category || !horsepower || !topspeed || !engine || !imgurl) {
+      alert(`Fill the form completely`)
+    } else {
+      const result = await addcardetailsApi(carDetails)
+      console.log(result);
+      if (result.status >= 200 && result.status < 300) {
+
+        alert(`Car details added Successfully`)
+        setTimeout(() => {
+          handleClose()
+        }, 1000);
+      } else {
+        alert(`Something went wrong`)
+      }
+    }
   }
 
   return (
@@ -100,7 +121,7 @@ function Home() {
             <input value={carDetails.category} onChange={(e) => setCarDetails({ ...carDetails, category: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Category' />
             <div>
               <div className="row">
-                <div className="col-lg-6 col-md-6 col-12"> <input value={carDetails.horepower} onChange={(e) => setCarDetails({ ...carDetails, horepower: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Horsepower' /></div>
+                <div className="col-lg-6 col-md-6 col-12"> <input value={carDetails.horsepower} onChange={(e) => setCarDetails({ ...carDetails, horsepower: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Horsepower' /></div>
                 <div className="col-lg-6 col-md-6 col-12"> <input value={carDetails.topspeed} onChange={(e) => setCarDetails({ ...carDetails, topspeed: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Top Speed' /></div>
               </div>
             </div>
@@ -111,7 +132,7 @@ function Home() {
             <Button variant="secondary" onClick={handleCancel}>
               Cancel
             </Button>
-            <Button variant="light" onClick={handleClose}>
+            <Button variant="light" onClick={handleAdd}>
               Add
             </Button>
           </Modal.Footer>
