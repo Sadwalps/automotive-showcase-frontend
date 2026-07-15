@@ -16,6 +16,11 @@ export const usersignupApi = async (reqBody) => {
     return await commonApi('POST', `${serverUrl}/users`, reqBody)
 }
 
+//Api for user login
+export const userloginApi = async(email,password)=>{
+    return await commonApi('GET', `${serverUrl}/users?=${email}&password=${password}`,"" )
+}
+
 //Api for add car details
 export const addcardetailsApi = async (reqBody) => {
     return await commonApi('POST', `${serverUrl}/cars`, reqBody)

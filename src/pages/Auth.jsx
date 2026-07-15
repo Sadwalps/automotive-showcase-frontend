@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Link, useNavigate } from 'react-router-dom';
-import { adminloginApi, adminsignupApi, usersignupApi } from '../service/allApi';
+import { adminloginApi, adminsignupApi, userloginApi, usersignupApi } from '../service/allApi';
 import { loginResponseContext } from '../context/ContextShare';
 
 function Auth({ signup, admin }) {
@@ -73,32 +73,47 @@ function Auth({ signup, admin }) {
     }
 
     //user signup
-    const handleusersignup = async() => {
+    const handleusersignup = async () => {
         const { username, email, password } = authdetails
         console.log(username, email, password);
         if (!username || !email || !password) {
             alert(`Fill the form completely`)
         } else {
-             const result = await usersignupApi({ username, email, password })
+            const result = await usersignupApi({ username, email, password })
             if (result.status >= 200 && result.status < 300) {
-                alert(`u Signup successfull`)
+                alert(`Signup successfull`)
                 setTimeout(() => {
                     navigate('/userlogin')
                 }, 1000)
             } else {
                 alert(`Something went wrong`)
-            } 
+            }
         }
     }
 
     //user login
-    const handleuserlogin = () => {
+    const handleuserlogin = async () => {
         const { email, password } = authdetails
         console.log(email, password);
         if (!email || !password) {
             alert(`Fill the form completely`)
         } else {
-            alert(`u login successfull`)
+            try {
+                const result = await userloginApi(email, password)
+                if (result.status == 200) {
+                    if (result.data.length > 0) {
+                        alert(`login successfull`)
+                        sessionStorage.setItem("user", JSON.stringify(result.data[0]))
+                        sessionStorage.setItem("role", "user")
+                        navigate('/')
+                    } else {
+                        alert(`Something went wrong`)
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+                alert(`Server connection failed`)
+            }
         }
     }
 
