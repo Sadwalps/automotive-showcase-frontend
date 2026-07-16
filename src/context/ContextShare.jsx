@@ -5,7 +5,8 @@ export const loginResponseContext = createContext({})
 function ContextShare({ children }) {
     const [loginResponse, setLoginResponse] = useState(() => {
         const adminData = sessionStorage.getItem('admin');
-        return adminData ? true : false;
+        const userData = sessionStorage.getItem('user')
+        return (adminData || userData) ? true : false;
     })
 
 

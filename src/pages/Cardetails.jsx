@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
@@ -7,11 +7,26 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getallcardeatilsApi } from '../service/allApi';
 
 function Cardetails() {
     const [show, setShow] = useState(false);
+    const [allcars, setAllcars] = useState([])
+
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const getallcars = async () => {
+        const result = await getallcardeatilsApi()
+        console.log(result);
+        setAllcars(result.data) 
+    }
+    console.log(allcars);
+
+    useEffect(() => {
+        getallcars()
+    }, [])
     return (
         <>
             <Header />
@@ -30,15 +45,15 @@ function Cardetails() {
 
             {/* car card's section */}
             <div className='container-fluid pt-lg-5 pt-3'>
-                <div className="row">
+               {allcars.length>0? <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
                         <div className="row">
-                            <div className="col-lg-4 col-md-6 col-12">
+                            {allcars?.map((item)=>(<div className="col-lg-4 col-md-6 col-12">
                                 <Card style={{ width: '100%', border: "0px", marginTop: "10px", marginBottom: "20px" }}>
-                                    <Card.Img variant="top" src="https://tse3.mm.bing.net/th/id/OIP.JRE3ZGj58ZPQShbvEq9leAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" />
+                                    <Card.Img variant="top" src={item?.imgurl} />
                                     <Card.Body>
-                                        <Card.Title style={{ fontWeight: "bold" }}>Lamborghini centenario</Card.Title>
+                                        <Card.Title style={{ fontWeight: "bold" }}>{item?.carname}</Card.Title>
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <button onClick={handleShow} className='cardetailsbuttons'>View image</button>
@@ -67,35 +82,12 @@ function Cardetails() {
                                     </Modal.Body>
 
                                 </Modal>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-12">
-                                <Card style={{ width: '100%', border: "0px", marginTop: "10px", marginBottom: "20px" }}>
-                                    <Card.Img variant="top" src="https://tse3.mm.bing.net/th/id/OIP.JRE3ZGj58ZPQShbvEq9leAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" />
-                                    <Card.Body>
-                                        <Card.Title style={{ fontWeight: "bold" }}>Lamborghini centenario</Card.Title>
-                                    </Card.Body>
-                                    <div className='d-flex justify-content-between'>
-                                        <button className='cardetailsbuttons'>View image</button>
-                                        <button className='cardetailsbuttons'>View details</button>
-                                    </div>
-                                </Card>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-12">
-                                <Card style={{ width: '100%', border: "0px", marginTop: "10px", marginBottom: "20px" }}>
-                                    <Card.Img variant="top" src="https://tse3.mm.bing.net/th/id/OIP.JRE3ZGj58ZPQShbvEq9leAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" />
-                                    <Card.Body>
-                                        <Card.Title style={{ fontWeight: "bold" }}>Lamborghini centenario</Card.Title>
-                                    </Card.Body>
-                                    <div className='d-flex justify-content-between'>
-                                        <button className='cardetailsbuttons'>View image</button>
-                                        <button className='cardetailsbuttons'>View details</button>
-                                    </div>
-                                </Card>
-                            </div>
+                            </div>))} 
                         </div>
                     </div>
                     <div className="col-md-1"></div>
-                </div>
+                </div>:
+                <h1>sdkjaksjdkajs</h1>}
             </div>
             < Footer />
         </>

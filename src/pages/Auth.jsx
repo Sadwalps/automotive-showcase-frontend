@@ -105,6 +105,7 @@ function Auth({ signup, admin }) {
                         alert(`login successfull`)
                         sessionStorage.setItem("user", JSON.stringify(result.data[0]))
                         sessionStorage.setItem("role", "user")
+                        setLoginResponse(true)
                         navigate('/')
                     } else {
                         alert(`Something went wrong`)

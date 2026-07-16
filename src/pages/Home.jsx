@@ -14,6 +14,7 @@ import { addcardetailsApi } from '../service/allApi';
 
 function Home() {
   const { loginResponse } = useContext(loginResponseContext)
+  const [adminStatus, setAdminStatus] = useState("")
   const [show, setShow] = useState(false);
   const [carDetails, setCarDetails] = useState({
     carname: "",
@@ -64,6 +65,12 @@ function Home() {
     }
   }
 
+  useEffect(()=>{
+   if(sessionStorage.getItem('admin')){
+    setAdminStatus(sessionStorage.getItem('admin'))
+   } 
+  })
+
   return (
     <>
       {/* section 1 */}
@@ -104,7 +111,7 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              {loginResponse == true ? <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button> :
+              {loginResponse == true ? adminStatus &&  <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button> :
                 <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>

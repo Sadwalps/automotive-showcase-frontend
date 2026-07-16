@@ -1,4 +1,4 @@
-import React, {   useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,15 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { loginResponseContext } from '../context/ContextShare';
+
 function Header() {
-  const {setLoginResponse} = useContext(loginResponseContext)
-  const {loginResponse} = useContext(loginResponseContext)
+  const { setLoginResponse } = useContext(loginResponseContext)
+  const { loginResponse } = useContext(loginResponseContext)
   console.log(loginResponse);
-  
+
   const navigate = useNavigate()
- 
+
   const handlelogout = () => {
     sessionStorage.removeItem("admin")
+    sessionStorage.removeItem("user")
     sessionStorage.removeItem("role")
     alert(`Logout successfull`)
     navigate('/')
@@ -28,7 +30,7 @@ function Header() {
       <div style={{ background: "grey" }}>
         <Navbar expand="lg" className="py-3">
           <Container>
-           <Navbar.Brand href='/' className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
+            <Navbar.Brand href='/' className='text-light' style={{ fontFamily: "cursive", fontWeight: "bold" }}>Automotive showcase</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
@@ -45,7 +47,7 @@ function Header() {
                 </Dropdown>
                 <button id='navlinks' className='btn border-0 mt-1 rounded-0 '>Add Cars</button>
 
-              {loginResponse==true && <button onClick={handlelogout} id='navlinks' className='btn border-0 mt-1 rounded-0'><FontAwesomeIcon icon={faPowerOff} style={{ fontSize: "17px" }} /></button>}
+                {loginResponse == true && <button onClick={handlelogout} id='navlinks' className='btn border-0 mt-1 rounded-0'><FontAwesomeIcon icon={faPowerOff} style={{ fontSize: "17px" }} /></button>}
               </Nav>
             </Navbar.Collapse>
           </Container>
