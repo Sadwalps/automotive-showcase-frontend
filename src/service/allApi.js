@@ -29,4 +29,9 @@ export const addcardetailsApi = async (reqBody) => {
 //Api for get all car details
 export const getallcardeatilsApi = async () => {
     return await commonApi('GET', `${serverUrl}/cars`, "")
-} 
+}
+
+//Api for edit car details
+export const editcardetailsApi = async (id) => {
+    return await commonApi('PUT', `${serverUrl}/cars/id`, {})
+}

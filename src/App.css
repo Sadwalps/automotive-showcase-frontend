@@ -109,7 +109,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 50vh;
-
 }
 
 .cardetailsbuttons {
@@ -139,6 +138,18 @@
 
 #likebtn:hover {
     color: rgb(239, 65, 172);
+    font-size: xx-large;
+    transition-duration: .2s;
+}
+
+#editbtn {
+    color: rgb(86, 86, 211);
+    font-size: x-large;
+    transition-duration: .2s;
+}
+
+#editbtn:hover {
+    color: rgb(128, 27, 156);
     font-size: xx-large;
     transition-duration: .2s;
 }
@@ -181,7 +192,7 @@
 }
 
 /* user role page */
-.userrolepage{
+.userrolepage {
     display: flex;
     justify-content: center;
     align-items: center;

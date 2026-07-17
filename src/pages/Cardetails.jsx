@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getallcardeatilsApi } from '../service/allApi';
+import Editcardeatils from '../components/Editcardeatils';
 
 function Cardetails() {
     const [show, setShow] = useState(false);
     const [allcars, setAllcars] = useState([])
-
+    const [adminStatus, setAdminStatus] = useState("")
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -20,13 +21,20 @@ function Cardetails() {
     const getallcars = async () => {
         const result = await getallcardeatilsApi()
         console.log(result);
-        setAllcars(result.data) 
+        setAllcars(result.data)
     }
     console.log(allcars);
 
     useEffect(() => {
         getallcars()
     }, [])
+
+    useEffect(() => {
+        if (sessionStorage.getItem("admin")) {
+            setAdminStatus(sessionStorage.getItem("admin"))
+        }
+    }, [])
+
     return (
         <>
             <Header />
@@ -45,11 +53,11 @@ function Cardetails() {
 
             {/* car card's section */}
             <div className='container-fluid pt-lg-5 pt-3'>
-               {allcars.length>0? <div className="row">
+                {allcars.length > 0 ? <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
                         <div className="row">
-                            {allcars?.map((item)=>(<div className="col-lg-4 col-md-6 col-12">
+                            {allcars?.map((item) => (<div className="col-lg-4 col-md-6 col-12">
                                 <Card style={{ width: '100%', border: "0px", marginTop: "10px", marginBottom: "20px" }}>
                                     <Card.Img variant="top" src={item?.imgurl} />
                                     <Card.Body>
@@ -57,11 +65,12 @@ function Cardetails() {
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <button onClick={handleShow} className='cardetailsbuttons'>View image</button>
-                                        <button className='btn p-1  ' id='likebtn' >
+                                        {!adminStatus?<button className='btn p-1  ' id='likebtn' >
                                             <FontAwesomeIcon icon={faHeart} />
-                                        </button>
+                                        </button>:
+                                        <Editcardeatils item={item} />
+                                       }
                                         <Link to={'/singlecardetails'}>
-
                                             <button className='cardetailsbuttons'>View details</button></Link>
                                     </div>
                                 </Card>
@@ -82,12 +91,15 @@ function Cardetails() {
                                     </Modal.Body>
 
                                 </Modal>
-                            </div>))} 
+                            </div>))}
                         </div>
                     </div>
                     <div className="col-md-1"></div>
-                </div>:
-                <h1>sdkjaksjdkajs</h1>}
+                </div> :
+                    <div className='d-flex justify-content-center align-items-center' style={{ height: "40vh" }}>
+                        <h1 className='text-primary' style={{ fontWeight: "bold" }} >Page is Empty!!!</h1>
+                    </div>
+                }
             </div>
             < Footer />
         </>
