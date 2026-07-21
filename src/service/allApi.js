@@ -32,6 +32,8 @@ export const getallcardeatilsApi = async () => {
 }
 
 //Api for edit car details
-export const editcardetailsApi = async (id) => {
-    return await commonApi('PUT', `${serverUrl}/cars/id`, {})
+export const editcardetailsApi = async (id,data) => {
+    return await commonApi('PUT', `${serverUrl}/cars/${id}`, data)
 }
+
+ 
