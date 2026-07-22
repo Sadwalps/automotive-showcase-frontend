@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
@@ -9,8 +9,10 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getallcardeatilsApi } from '../service/allApi';
 import Editcardeatils from '../components/Editcardeatils';
+import { editResponseContext } from '../context/ContextShare';
 
 function Cardetails() {
+    const {editResponse} = useContext(editResponseContext)
     const [show, setShow] = useState(false);
     const [allcars, setAllcars] = useState([])
     const [adminStatus, setAdminStatus] = useState("")
@@ -27,7 +29,7 @@ function Cardetails() {
 
     useEffect(() => {
         getallcars()
-    }, [])
+    }, [editResponse])
 
     useEffect(() => {
         if (sessionStorage.getItem("admin")) {

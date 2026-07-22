@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 
 export const loginResponseContext = createContext({})
+export const editResponseContext = createContext({})
 
 function ContextShare({ children }) {
     const [loginResponse, setLoginResponse] = useState(() => {
@@ -9,10 +10,13 @@ function ContextShare({ children }) {
         return (adminData || userData) ? true : false;
     })
 
+    const [editResponse, setEditResponse] = useState([])
 
     return (
         <loginResponseContext.Provider value={{ loginResponse, setLoginResponse }}>
-            {children}
+            <editResponseContext.Provider value={{ editResponse, setEditResponse }}>
+                {children}
+            </editResponseContext.Provider>
         </loginResponseContext.Provider>
     )
 }
