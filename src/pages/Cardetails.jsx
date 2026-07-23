@@ -5,17 +5,19 @@ import Modal from 'react-bootstrap/Modal';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faAngleUp, faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getallcardeatilsApi } from '../service/allApi';
+import { deletecardetailsApi, getallcardeatilsApi } from '../service/allApi';
 import Editcardeatils from '../components/Editcardeatils';
 import { editResponseContext } from '../context/ContextShare';
+import Viewimagemodal from '../components/Viewimagemodal';
 
 function Cardetails() {
-    const {editResponse} = useContext(editResponseContext)
+    const { editResponse } = useContext(editResponseContext)
     const [show, setShow] = useState(false);
     const [allcars, setAllcars] = useState([])
     const [adminStatus, setAdminStatus] = useState("")
+    const [deleteStatus, setDeleteStatus] = useState([])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -27,9 +29,22 @@ function Cardetails() {
     }
     console.log(allcars);
 
+    const handleDelete = async (id) => {
+        console.log(id);
+
+        const result = await deletecardetailsApi(id)
+        console.log(result);
+        if (result.status >= 200 && result.status < 300) {
+            alert(`Car successfully deleted`)
+            setDeleteStatus(result)
+        } else {
+            alert(`Something went wrong`)
+        }
+    }
+
     useEffect(() => {
         getallcars()
-    }, [editResponse])
+    }, [editResponse, deleteStatus])
 
     useEffect(() => {
         if (sessionStorage.getItem("admin")) {
@@ -66,33 +81,21 @@ function Cardetails() {
                                         <Card.Title style={{ fontWeight: "bold" }}>{item?.carname}</Card.Title>
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
-                                        <button onClick={handleShow} className='cardetailsbuttons'>View image</button>
-                                        {!adminStatus?<button className='btn p-1  ' id='likebtn' >
+                                        <Viewimagemodal item={item} />
+                                        {!adminStatus ? <button className='btn p-1  ' id='likebtn' >
                                             <FontAwesomeIcon icon={faHeart} />
-                                        </button>:
-                                        <Editcardeatils item={item} />
-                                       }
+                                        </button> :
+                                            <div className='d-flex gap-4'>
+                                                <Editcardeatils item={item} />
+                                                <button className='btn p-1' id='deletebtn' onClick={() => handleDelete(item?.id)} > <FontAwesomeIcon icon={faTrash} /></button>
+                                            </div>
+                                        }
                                         <Link to={'/singlecardetails'}>
-                                            <button className='cardetailsbuttons'>View details</button></Link>
+                                            <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
+                                                <FontAwesomeIcon icon={faAngleUp} />
+                                            </button></Link>
                                     </div>
                                 </Card>
-                                {/* modal for view car image */}
-                                <Modal
-                                    show={show}
-                                    onHide={handleClose}
-                                    backdrop="static"
-                                    keyboard={false}
-                                    size='lg'
-                                    centered
-                                >
-                                    <Modal.Header closeButton>
-
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <img src="https://th.bing.com/th/id/OIP.D4yorbuihRQjUahXKMG0vQHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" className='w-100' />
-                                    </Modal.Body>
-
-                                </Modal>
                             </div>))}
                         </div>
                     </div>

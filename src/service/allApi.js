@@ -36,3 +36,8 @@ export const editcardetailsApi = async (id, data) => {
     return await commonApi('PUT', `${serverUrl}/cars/${id}`, data)
 }
 
+//Api for delete car details
+export const deletecardetailsApi = async(id)=>{
+    return await commonApi('DELETE', `${serverUrl}/cars/${id}`,{})
+}
+

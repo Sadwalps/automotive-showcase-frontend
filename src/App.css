@@ -70,7 +70,7 @@
     transition-duration: .3s;
 }
 
-.homecarhovercardbtns {
+.carcardsbtns {
     background-color: red;
     color: white;
     border-color: white;
@@ -81,7 +81,7 @@
     transition-duration: .2s;
 }
 
-.homecarhovercardbtns:hover {
+.carcardsbtns:hover {
     background-color: white;
     color: red;
     border-style: solid;
@@ -111,25 +111,6 @@
     height: 50vh;
 }
 
-.cardetailsbuttons {
-    color: white;
-    border-width: 3px;
-    border-style: solid;
-    border-color: white;
-    background-color: red;
-    border-radius: 5px;
-    padding: 7px 8px 7px 8px;
-    transition-duration: .2s;
-    font-weight: bold;
-}
-
-.cardetailsbuttons:hover {
-    color: red;
-    background-color: white;
-    transition-duration: .2s;
-    border-color: red;
-}
-
 #likebtn {
     color: red;
     font-size: x-large;
@@ -150,6 +131,18 @@
 
 #editbtn:hover {
     color: rgb(128, 27, 156);
+    font-size: xx-large;
+    transition-duration: .2s;
+}
+
+#deletebtn {
+    color: rgb(244, 7, 35);
+    font-size: x-large;
+    transition-duration: .2s;
+}
+
+#deletebtn:hover {
+    color: rgb(156, 27, 154);
     font-size: xx-large;
     transition-duration: .2s;
 }

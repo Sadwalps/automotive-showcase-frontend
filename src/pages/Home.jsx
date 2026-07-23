@@ -161,7 +161,7 @@ function Home() {
 
                   <div className='d-flex justify-content-center gap-3'>
                     <Viewimagemodal />
-                    <button className='homecarhovercardbtns  px-2 py-1 fs-lg-4  fs-5'>
+                    <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                       <FontAwesomeIcon icon={faAngleUp} />
                     </button>
                   </div>
