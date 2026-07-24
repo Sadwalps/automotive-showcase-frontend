@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
 import { loginResponseContext } from '../context/ContextShare';
-import { addcardetailsApi } from '../service/allApi';
+import { addcardetailsApi, getallcardetailsApi } from '../service/allApi';
 
 function Home() {
   const { loginResponse } = useContext(loginResponseContext)
@@ -26,6 +26,7 @@ function Home() {
     imgurl: ""
   })
   console.log(carDetails);
+  const [allcardetails, setAllcardetails] = useState([])
 
   const handleClose = () => {
     setShow(false);
@@ -65,11 +66,21 @@ function Home() {
     }
   }
 
-  useEffect(()=>{
-   if(sessionStorage.getItem('admin')){
-    setAdminStatus(sessionStorage.getItem('admin'))
-   } 
+  const getallcardetails = async () => {
+    const result = await getallcardetailsApi()
+    setAllcardetails(result.data)
+  }
+  console.log(allcardetails);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('admin')) {
+      setAdminStatus(sessionStorage.getItem('admin'))
+    }
   })
+
+  useEffect(() => {
+    getallcardetails()
+  }, [])
 
   return (
     <>
@@ -88,7 +99,7 @@ function Home() {
 
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              {loginResponse == true ? <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button> :
+              {loginResponse == true ? adminStatus && <button onClick={handleShow} className='btn btn-danger px-lg-5 px-2 py-2'>Add Car</button> :
                 <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>
@@ -99,7 +110,7 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Built for Car Lovers</h5>
               <h6 className='carouselsubheading'>Browse iconic cars, compare performance, and save the ones you love</h6>
-              {loginResponse == true ? <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button> :
+              {loginResponse == true ? adminStatus && <button onClick={handleShow} className='btn btn-warning px-lg-5 px-2 py-2'>Add Car</button> :
                 <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>
@@ -111,7 +122,7 @@ function Home() {
             <Carousel.Caption>
               <h5 className='carouselmainheading'>Discover Your Dream Car</h5>
               <h6 className='carouselsubheading'>Explore detailed specs, save favorites, and build your ultimate garage</h6>
-              {loginResponse == true ? adminStatus &&  <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button> :
+              {loginResponse == true ? adminStatus && <button onClick={handleShow} className='btn btn-primary px-lg-5 px-2 py-2'>Add Car</button> :
                 <Link to={'/userrole'}> <button className='btn btn-info px-lg-5 px-3 py-2 fs-5'>  start  <FontAwesomeIcon icon={faRightLong} className='ms-2 ' /> </button></Link>}
             </Carousel.Caption>
           </Carousel.Item>
@@ -147,7 +158,7 @@ function Home() {
       </div>
 
       {/* section 2 */}
-      <div className='container-fluid mt-lg-4 mt-2 mb-lg-5 mb-3'>
+      {!adminStatus && <div className='container-fluid mt-lg-4 mt-2 mb-lg-5 mb-3'>
         <div className="row">
           <div className="col-md-2"></div>
           <div className="col-md-8">
@@ -175,10 +186,10 @@ function Home() {
           <div className="col-md-2"></div>
         </div>
 
-      </div>
+      </div>}
 
       {/* section 3 */}
-      <div className='mt-lg-5 mt-3 mb-lg-5 mb-3 pt-lg-5 pt-3 pb-lg-5 pb-2 container-fluid ' style={{ backgroundColor: "rgb(230, 226, 226)" }}>
+      {!adminStatus && <div className='mt-lg-5 mt-3 mb-lg-5 mb-3 pt-lg-5 pt-3 pb-lg-5 pb-2 container-fluid ' style={{ backgroundColor: "rgb(230, 226, 226)" }}>
         <div className="row">
           <div className="col-md-1"></div>
           <div className="col-md-10">
@@ -215,7 +226,7 @@ function Home() {
             </div>
           </div>
           <div className="col-md-1"></div></div>
-      </div>
+      </div>}
 
       < Footer />
     </>

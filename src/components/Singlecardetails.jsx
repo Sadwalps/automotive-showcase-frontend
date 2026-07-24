@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { getallcardetailsApi } from '../service/allApi'
+
 
 function Singlecardetails() {
+    const { id } = useParams();
+    console.log(id);
+
+    const [allcardetails, setAllcardetails] = useState([])
+
+
+    const getallcars = async () => {
+        const result = await getallcardetailsApi()
+        console.log(result);
+        setAllcardetails(result.data)
+    }
+    console.log(allcardetails);
+
+    const singlecardetails =  allcardetails?.find(item => item.id == id)
+
+
+    useEffect(() => {
+        getallcars()
+    }, [])
+
+
     return (
         <>
             <Header />
@@ -28,15 +51,15 @@ function Singlecardetails() {
                     <div className="col-md-10">
                         <div className="row">
                             <div className="col-md-6">
-                                <img src="https://tse2.mm.bing.net/th/id/OIP._wCQkgQoiNaHD28LRIR4DQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" className='w-100 shadow' />
+                                <img src={singlecardetails?.imgurl} alt="" className='w-100 shadow' />
                             </div>
                             <div className="col-md-6 d-flex flex-column justify-content-center align-items-center">
-                                <h2 className='' style={{ fontWeight: "bold" }} >lamborghini huracan</h2>
-                                <h3 className='singlecardetailstext'> <span style={{ fontWeight: "bold" }}>Brand:</span> lamborghini </h3>
-                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Category:</span> lamborghini</h3>
-                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Horsepower:</span> lamborghini</h3>
-                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Top Speed:</span> lamborghini</h3>
-                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Engine:</span> lamborghini</h3>
+                                <h2 className='' style={{ fontWeight: "bold" }} >{singlecardetails?.carname}</h2>
+                                <h3 className='singlecardetailstext'> <span style={{ fontWeight: "bold" }}>Brand:</span> {singlecardetails?.brand} </h3>
+                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Category:</span> {singlecardetails?.category}</h3>
+                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Horsepower:</span> {singlecardetails?.horsepower}</h3>
+                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Top Speed:</span> {singlecardetails?.topspeed}</h3>
+                                <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Engine:</span> {singlecardetails?.engine}</h3>
                             </div>
                         </div>
                         <p className='mt-4 singlecardetailstext2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae vitae velit minus numquam dolores maiores quam, deleniti cum, dignissimos accusantium inventore doloribus a nemo repellat ipsa voluptas. Quis, iusto rerum!</p>

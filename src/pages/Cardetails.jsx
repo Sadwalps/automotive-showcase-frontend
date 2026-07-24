@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { faAngleUp, faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { deletecardetailsApi, getallcardeatilsApi } from '../service/allApi';
+import { deletecardetailsApi, getallcardetailsApi,  } from '../service/allApi';
 import Editcardeatils from '../components/Editcardeatils';
 import { editResponseContext } from '../context/ContextShare';
 import Viewimagemodal from '../components/Viewimagemodal';
@@ -23,7 +23,7 @@ function Cardetails() {
     const handleShow = () => setShow(true);
 
     const getallcars = async () => {
-        const result = await getallcardeatilsApi()
+        const result = await getallcardetailsApi()
         console.log(result);
         setAllcars(result.data)
     }
@@ -90,7 +90,7 @@ function Cardetails() {
                                                 <button className='btn p-1' id='deletebtn' onClick={() => handleDelete(item?.id)} > <FontAwesomeIcon icon={faTrash} /></button>
                                             </div>
                                         }
-                                        <Link to={'/singlecardetails'}>
+                                        <Link to={`/singlecardetails/${item.id}`}>
                                             <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                                                 <FontAwesomeIcon icon={faAngleUp} />
                                             </button></Link>

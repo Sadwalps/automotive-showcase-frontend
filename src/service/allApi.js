@@ -27,7 +27,7 @@ export const addcardetailsApi = async (reqBody) => {
 }
 
 //Api for get all car details
-export const getallcardeatilsApi = async () => {
+export const getallcardetailsApi = async () => {
     return await commonApi('GET', `${serverUrl}/cars`, "")
 }
 
@@ -37,7 +37,7 @@ export const editcardetailsApi = async (id, data) => {
 }
 
 //Api for delete car details
-export const deletecardetailsApi = async(id)=>{
-    return await commonApi('DELETE', `${serverUrl}/cars/${id}`,{})
+export const deletecardetailsApi = async (id) => {
+    return await commonApi('DELETE', `${serverUrl}/cars/${id}`, {})
 }
 

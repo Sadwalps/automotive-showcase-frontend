@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/cardetails' element={loginResponse ? <Cardetails /> : <Pagenotfound />} />
-        <Route path='/singlecardetails' element={<Singlecardetails />} />
+        <Route path='/singlecardetails/:id' element={<Singlecardetails/>} />
         <Route path='/favoritecardetails' element={<Favorites />} />
         <Route path='/userrole' element={<Userrole />} />
         <Route path='/adminsignup' element={<Auth signup={true} admin={true} />} />
