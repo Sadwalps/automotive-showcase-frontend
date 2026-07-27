@@ -15,6 +15,7 @@ import { addcardetailsApi, getallcardetailsApi } from '../service/allApi';
 function Home() {
   const { loginResponse } = useContext(loginResponseContext)
   const [adminStatus, setAdminStatus] = useState("")
+  const [userStatus, setUserStatus] = useState("")
   const [show, setShow] = useState(false);
   const [carDetails, setCarDetails] = useState({
     carname: "",
@@ -27,6 +28,10 @@ function Home() {
   })
   console.log(carDetails);
   const [allcardetails, setAllcardetails] = useState([])
+
+  const [sortCarDetails, setSortCarDetails] = useState([])
+  console.log(sortCarDetails);
+
 
   const handleClose = () => {
     setShow(false);
@@ -69,9 +74,11 @@ function Home() {
   const getallcardetails = async () => {
     const result = await getallcardetailsApi()
     setAllcardetails(result.data)
+    setSortCarDetails(result.data.slice(0,6))
   }
   console.log(allcardetails);
 
+ 
   useEffect(() => {
     if (sessionStorage.getItem('admin')) {
       setAdminStatus(sessionStorage.getItem('admin'))
@@ -79,7 +86,14 @@ function Home() {
   })
 
   useEffect(() => {
+    if (sessionStorage.getItem('user')) {
+      setUserStatus(sessionStorage.getItem('user'))
+    }
+  })
+
+  useEffect(() => {
     getallcardetails()
+    
   }, [])
 
   return (
@@ -158,27 +172,27 @@ function Home() {
       </div>
 
       {/* section 2 */}
-      {!adminStatus && <div className='container-fluid mt-lg-4 mt-2 mb-lg-5 mb-3'>
+      {loginResponse && userStatus && <div className='container-fluid mt-lg-4 mt-2 mb-lg-4 mb-3'>
         <div className="row">
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="row">
-              <div className="col-md-4 d-flex justify-content-center   homecarmaincard">
+             {sortCarDetails?.map((item)=>(<div className="col-md-4 d-flex justify-content-center mt-lg-1 mt-md-1 mt-4   homecarmaincard">
                 <div className='homecarcard ' >
-                  <img src="https://tse3.mm.bing.net/th/id/OIP.l9bZFUj96uX7vw8YQuUcqgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" className='w-100' />
+                  <img src={item?.imgurl} alt="" className='w-100' />
                 </div>
                 {/* card that appears only when we mouse hover on it */}
                 <div className='homecarhovercard d-flex    flex-column justify-content-center align-items-center'>
 
                   <div className='d-flex justify-content-center gap-3'>
-                    <Viewimagemodal />
+                    <Viewimagemodal item={item} />
                     <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                       <FontAwesomeIcon icon={faAngleUp} />
                     </button>
                   </div>
 
                 </div>
-              </div>
+              </div>))}
               <div className="col-md-4"></div>
               <div className="col-md-4"></div>
             </div>
@@ -189,7 +203,7 @@ function Home() {
       </div>}
 
       {/* section 3 */}
-      {!adminStatus && <div className='mt-lg-5 mt-3 mb-lg-5 mb-3 pt-lg-5 pt-3 pb-lg-5 pb-2 container-fluid ' style={{ backgroundColor: "rgb(230, 226, 226)" }}>
+      {loginResponse && userStatus && <div className='mt-lg-5 mt-3 mb-lg-5 mb-3 pt-lg-5 pt-3 pb-lg-5 pb-2 container-fluid ' style={{ backgroundColor: "rgb(230, 226, 226)" }}>
         <div className="row">
           <div className="col-md-1"></div>
           <div className="col-md-10">
