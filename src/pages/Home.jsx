@@ -186,9 +186,12 @@ function Home() {
 
                   <div className='d-flex justify-content-center gap-3'>
                     <Viewimagemodal item={item} />
+                    <Link to={`/singlecardetails/${item.id}`}>
                     <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                       <FontAwesomeIcon icon={faAngleUp} />
                     </button>
+                    </Link>
+                    
                   </div>
 
                 </div>
