@@ -3,7 +3,7 @@ import { getallcardetailsApi, updatecarApi } from "../service/allApi";
 
 export const loginResponseContext = createContext({})
 export const editResponseContext = createContext({})
-export const carContext = createContext();
+// export const carContext = createContext();
 
 function ContextShare({ children }) {
     const [loginResponse, setLoginResponse] = useState(() => {
@@ -30,24 +30,24 @@ function ContextShare({ children }) {
         fetchCars()
     }, [])
 
-    const likeCar = async (carId) => {
-        try {
-            const response = await updatecarApi(carId, { isLiked: true });
-            if (response.status === 200) {
-                setCars(prevCars => prevCars.map(car.id === carId ? { ...car, isLiked: true } : car))
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // const likeCar = async (carId) => {
+    //     try {
+    //         const response = await updatecarApi(carId, { isLiked: true });
+    //         if (response.status === 200) {
+    //             setCars(prevCars => prevCars.map(car.id === carId ? { ...car, isLiked: true } : car))
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
 
     return (
         <loginResponseContext.Provider value={{ loginResponse, setLoginResponse }}>
             <editResponseContext.Provider value={{ editResponse, setEditResponse }}>
-                <carContext.Provider value={{ cars, setCars, likeCar }}>
+                {/* <carContext.Provider value={{ cars, setCars, likeCar }}> */}
                     {children}
-                </carContext.Provider>
+                {/* </carContext.Provider> */}
             </editResponseContext.Provider>
         </loginResponseContext.Provider>
     )

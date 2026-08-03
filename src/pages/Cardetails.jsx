@@ -84,7 +84,7 @@ function Cardetails() {
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <Viewimagemodal item={item} />
-                                        {!adminStatus ? <Likecarconfirm/> : 
+                                        {!adminStatus ? <Likecarconfirm item={item}/> : 
                                             <div className='d-flex gap-4'>
                                                 <Editcardeatils item={item} />
                                                 <button className='btn p-1' id='deletebtn' onClick={() => handleDelete(item?.id)} > <FontAwesomeIcon icon={faTrash} /></button>
