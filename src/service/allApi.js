@@ -41,7 +41,17 @@ export const deletecardetailsApi = async (id) => {
     return await commonApi('DELETE', `${serverUrl}/cars/${id}`, {})
 }
 
-//Api for like car
-export const updatecarApi = async(id,reqBody)=>{
-    return await commonApi('PATCH', `${serverUrl}/cars/${id}`, reqBody)
+//Api for add liked car
+export const addlikedcarApi = async(reqBody)=>{
+    return await commonApi('POST', `${serverUrl}/likedcars`, reqBody)
+}
+
+//Api for get liked cars 
+export const getlikedcarApi = async()=>{
+    return await commonApi('GET', `${serverUrl}/likedcars`,"")
+}
+
+//Api for remove liked car
+export const removelikedcarApi = async(id)=>{
+    return await commonApi('DELETE', `${serverUrl}/likedcars/${id}`,{})
 }
