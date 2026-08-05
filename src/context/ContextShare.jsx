@@ -67,7 +67,8 @@ function ContextShare({ children }) {
 
         if (!isAlreadyLiked) {
             try {
-                const result = await addlikedcarApi(car);
+                const{id, ...carWithotId} = car;
+                const result = await addlikedcarApi(carWithotId);
                 if (result.status === 201 || result.status === 200) {
                     setLikedcars((prev) => [...prev, result.data]);
                 }

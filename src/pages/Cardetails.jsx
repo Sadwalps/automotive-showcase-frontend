@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import { faAngleUp, faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faAngleUp, faCheck, faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deletecardetailsApi, getallcardetailsApi, } from '../service/allApi';
 import Editcardeatils from '../components/Editcardeatils';
@@ -84,7 +84,8 @@ function Cardetails() {
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <Viewimagemodal item={item} />
-                                        {!adminStatus ? <Likecarconfirm item={item}/> : 
+                                        <FontAwesomeIcon icon={faCheck} className='text-success fa-2x' />
+                                        {!adminStatus ? <Likecarconfirm item={item} /> :
                                             <div className='d-flex gap-4'>
                                                 <Editcardeatils item={item} />
                                                 <button className='btn p-1' id='deletebtn' onClick={() => handleDelete(item?.id)} > <FontAwesomeIcon icon={faTrash} /></button>
@@ -94,7 +95,7 @@ function Cardetails() {
                                             <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                                                 <FontAwesomeIcon icon={faAngleUp} />
                                             </button></Link>
-                                       
+
                                     </div>
                                 </Card>
                             </div>))}
