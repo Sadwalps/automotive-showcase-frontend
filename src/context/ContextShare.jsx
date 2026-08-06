@@ -63,11 +63,11 @@ function ContextShare({ children }) {
 
     // save liked car (if not already liked)
     const saveLikedCar = async (car) => {
-        const isAlreadyLiked = likedcars.some((item) => item.name === car.name)
+        const isAlreadyLiked = likedcars.some((item) => item.name && car.name && item.name.toLowerCase() === car.name.toLowerCase())
 
         if (!isAlreadyLiked) {
             try {
-                const{id, ...carWithotId} = car;
+                const { id, ...carWithotId } = car;
                 const result = await addlikedcarApi(carWithotId);
                 if (result.status === 201 || result.status === 200) {
                     setLikedcars((prev) => [...prev, result.data]);

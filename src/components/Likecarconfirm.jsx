@@ -6,17 +6,22 @@ import Modal from 'react-bootstrap/Modal';
 import { carContext } from '../context/ContextShare';
 
 function Likecarconfirm({ item }) {
-    const { likedcars, saveLikedCar } = useContext(carContext)
+    const { saveLikedCar } = useContext(carContext)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     console.log(item);
 
-    const isLiked = likedcars.some((car) => car.carname === item.carname);
-    const handleConfirm = async () => {
+   
+    const handleConfirm = async (e) => {
+        e.preventDefault()
         await saveLikedCar(item);
 
-       
+        setTimeout(() => {
+            handleClose()
+        }, 1000)
+
+
 
     }
 
