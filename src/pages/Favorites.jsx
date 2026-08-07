@@ -5,6 +5,9 @@ import Modal from 'react-bootstrap/Modal';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import Viewimagemodal from '../components/Viewimagemodal';
 function Favorites() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -38,50 +41,11 @@ function Favorites() {
                                         <Card.Title style={{ fontWeight: "bold" }}>Lamborghini centenario</Card.Title>
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
-                                        <button onClick={handleShow} className='cardetailsbuttons'>View image</button>
-                                        <Link to={'/singlecardetails'}>
-                                            <button className='cardetailsbuttons'>View details</button></Link>
-                                    </div>
-                                </Card>
-                                {/* modal for view car image */}
-                                <Modal
-                                    show={show}
-                                    onHide={handleClose}
-                                    backdrop="static"
-                                    keyboard={false}
-                                    size='lg'
-                                    centered
-                                >
-                                    <Modal.Header closeButton>
-
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <img src="https://th.bing.com/th/id/OIP.D4yorbuihRQjUahXKMG0vQHaE8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" className='w-100' />
-                                    </Modal.Body>
-
-                                </Modal>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-12">
-                                <Card style={{ width: '100%', border: "0px", marginTop: "10px", marginBottom: "20px" }}>
-                                    <Card.Img variant="top" src="https://tse3.mm.bing.net/th/id/OIP.JRE3ZGj58ZPQShbvEq9leAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" />
-                                    <Card.Body>
-                                        <Card.Title style={{ fontWeight: "bold" }}>Lamborghini centenario</Card.Title>
-                                    </Card.Body>
-                                    <div className='d-flex justify-content-between'>
-                                        <button className='cardetailsbuttons'>View image</button>
-                                        <button className='cardetailsbuttons'>View details</button>
-                                    </div>
-                                </Card>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-12">
-                                <Card style={{ width: '100%', border: "0px", marginTop: "10px", marginBottom: "20px" }}>
-                                    <Card.Img variant="top" src="https://tse3.mm.bing.net/th/id/OIP.JRE3ZGj58ZPQShbvEq9leAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" />
-                                    <Card.Body>
-                                        <Card.Title style={{ fontWeight: "bold" }}>Lamborghini centenario</Card.Title>
-                                    </Card.Body>
-                                    <div className='d-flex justify-content-between'>
-                                        <button className='cardetailsbuttons'>View image</button>
-                                        <button className='cardetailsbuttons'>View details</button>
+                                        <Viewimagemodal />
+                                        <Link >
+                                            <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
+                                                <FontAwesomeIcon icon={faAngleUp} />
+                                            </button></Link>
                                     </div>
                                 </Card>
                             </div>

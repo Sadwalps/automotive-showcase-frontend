@@ -16,7 +16,7 @@ import Likecarconfirm from '../components/Likecarconfirm';
 
 function Cardetails() {
     const { editResponse } = useContext(editResponseContext)
-    const { likedcars} = useContext(carContext)
+    const { likedcars } = useContext(carContext)
     const [show, setShow] = useState(false);
     const [allcars, setAllcars] = useState([])
     const [adminStatus, setAdminStatus] = useState("")
@@ -44,7 +44,7 @@ function Cardetails() {
             alert(`Something went wrong`)
         }
     }
-     
+
 
     useEffect(() => {
         getallcars()
@@ -86,25 +86,22 @@ function Cardetails() {
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <Viewimagemodal item={item} />
-                                        {likedcars?.some((liked)=>liked?.carname?.toLowerCase() === item?.carname?.toLowerCase)}
-                                        <FontAwesomeIcon icon={faCheck} className='text-success fa-2x' />
-                                        {!adminStatus ? <Likecarconfirm item={item} /> :
+                                        {!adminStatus ? (likedcars?.some((liked) => liked?.carname?.toLowerCase() === item?.carname?.toLowerCase()) ? (
+                                            <FontAwesomeIcon icon={faCheck} className='text-success fa-2x' />) : (
+                                            <Likecarconfirm item={item} />)) : (
                                             <div className='d-flex gap-4'>
                                                 <Editcardeatils item={item} />
                                                 <button className='btn p-1' id='deletebtn' onClick={() => handleDelete(item?.id)} > <FontAwesomeIcon icon={faTrash} /></button>
                                             </div>
-                                        }
+                                        )}
                                         <Link to={`/singlecardetails/${item.id}`}>
                                             <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                                                 <FontAwesomeIcon icon={faAngleUp} />
                                             </button></Link>
-
                                     </div>
                                 </Card>
                             </div>))}
                         </div>
-
-
                     </div>
                     <div className="col-md-1"></div>
                 </div> :
