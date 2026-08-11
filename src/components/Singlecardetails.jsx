@@ -35,8 +35,8 @@ function Singlecardetails() {
                 <div className="container-fluid ">
                     <div className="row">
                         <div className="col-8  ps-2 text-light" style={{ fontWeight: "bold" }}>
-                            <h1 className=' ps-lg-5 ps-2'>All Cars</h1>
-                            <h3 className='ps-lg-5 ps-2'>Search your favorate cars</h3>
+                            <h1 className=' ps-lg-5 ps-2'>{singlecardetails?.carname}</h1>
+                            <h3 className='ps-lg-5 ps-2'>{singlecardetails?.category}</h3>
                         </div>
                         <div className="col-4">
                         </div>
