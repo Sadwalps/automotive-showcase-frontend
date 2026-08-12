@@ -14,46 +14,17 @@ function ContextShare({ children }) {
 
     const [editResponse, setEditResponse] = useState([])
 
-    // const [cars, setCars] = useState([])
-    // const fetchCars = async () => {
-    //     try {
-    //         const response = await getallcardetailsApi();
-    //         if (response.status === 200) {
-    //             setCars(response.data);
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchCars()
-    // }, [])
-
-
-
-    // const likeCar = async (carId) => {
-    //     try {
-    //         const response = await updatecarApi(carId, { isLiked: true });
-    //         if (response.status === 200) {
-    //             setCars(prevCars => prevCars.map(car.id === carId ? { ...car, isLiked: true } : car))
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
     const [likedcars, setLikedcars] = useState([]);
 
     //fetch all liked cars from the api
     const fetchLikedCars = async () => {
         try {
-            const loggedInUser = JSON.parse(sessionStorage.getItem("user")) ;
+            const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
             const currentUserId = loggedInUser?.id || loggedInUser?._id;
 
             const result = await getlikedcarApi()
             if (result.status === 200) {
-                const userCars = result.data.filter(item => item.userId === currentUserId);
+                const userCars = result.data.filter(item => String(item.userId) === String(currentUserId));
                 setLikedcars(userCars)
             }
         } catch (error) {
@@ -61,9 +32,16 @@ function ContextShare({ children }) {
         }
     }
 
+    const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
+    const currentUserId = loggedInUser?.id || loggedInUser?._id;
+
     useEffect(() => {
-        fetchLikedCars();
-    }, [])
+        if (currentUserId) {
+            fetchLikedCars();
+        } else {
+            setLikedcars([]);
+        }
+    }, [currentUserId])
 
     // save liked car (if not already liked)
     const saveLikedCar = async (car) => {
@@ -71,15 +49,15 @@ function ContextShare({ children }) {
         const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
         const currentUserId = loggedInUser?.id || loggedInUser?._id;
 
-        const isAlreadyLiked = likedcars.some((item) => item.name && car.name && item.name.toLowerCase() === car.name.toLowerCase())
+        const isAlreadyLiked = likedcars.some((item) => (item.carname || item.name)?.toLowerCase() === (car.carname || car.name)?.toLowerCase());
 
         if (!isAlreadyLiked) {
             try {
                 const { id, ...carWithotId } = car;
 
-                const carWithUserId = {...carWithotId, userId:currentUserId};
-                
-                const result = await addlikedcarApi(carWithotId);
+                const carWithUserId = { ...carWithotId, userId: currentUserId };
+
+                const result = await addlikedcarApi(carWithUserId);
                 if (result.status === 201 || result.status === 200) {
                     setLikedcars((prev) => [...prev, result.data]);
                 }
