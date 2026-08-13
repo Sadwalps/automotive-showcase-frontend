@@ -6,11 +6,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleUp, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Viewimagemodal from '../components/Viewimagemodal';
 import { carContext } from '../context/ContextShare';
 function Favorites() {
-    const { likedcars } = useContext(carContext)
+    const { likedcars, removeLikedCar } = useContext(carContext)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -44,7 +44,7 @@ function Favorites() {
                                     </Card.Body>
                                     <div className='d-flex justify-content-between'>
                                         <Viewimagemodal item={item} />
-                                        
+                                        <button className='btn p-1' id='deletebtn' onClick={() => removeLikedCar(item?.id)} > <FontAwesomeIcon icon={faTrash} /></button>
                                         <Link to={`/singlecardetails/${item.id}`}>
                                             <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
                                                 <FontAwesomeIcon icon={faAngleUp} />
