@@ -9,7 +9,7 @@ import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { loginResponseContext } from '../context/ContextShare';
 
-function Header() {
+function Header({ setAdminStatus, adminStatus }) {
   const { setLoginResponse } = useContext(loginResponseContext)
   const { loginResponse } = useContext(loginResponseContext)
   console.log(loginResponse);
@@ -23,6 +23,7 @@ function Header() {
     alert(`Logout successfull`)
     navigate('/')
     setLoginResponse(false)
+    setAdminStatus("")
   }
 
   return (
@@ -42,11 +43,10 @@ function Header() {
                   </Dropdown.Toggle>
                   <Dropdown.Menu className='' style={{ background: "grey", opacity: "30px", border: "0px" }} >
                     <Link to={'/cardetails'} style={{ textDecoration: "none" }}><Dropdown.Item href="#/action-1" id='dropdownoptions'>All Cars</Dropdown.Item></Link>
-                    <Link to={'/favoritecardetails'} style={{ textDecoration: "none" }}>  <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item></Link>
+                    {!adminStatus && <Link to={'/favoritecardetails'} style={{ textDecoration: "none" }}>  <Dropdown.Item href="#/action-2" id='dropdownoptions'>Favorites</Dropdown.Item></Link>}
                   </Dropdown.Menu>
                 </Dropdown>
-                <button id='navlinks' className='btn border-0 mt-1 rounded-0 '>Add Cars</button>
-
+                
                 {loginResponse == true && <button onClick={handlelogout} id='navlinks' className='btn border-0 mt-1 rounded-0'><FontAwesomeIcon icon={faPowerOff} style={{ fontSize: "17px" }} /></button>}
               </Nav>
             </Navbar.Collapse>

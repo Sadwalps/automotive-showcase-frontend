@@ -24,7 +24,8 @@ function Home() {
     horsepower: "",
     topspeed: "",
     engine: "",
-    imgurl: ""
+    imgurl: "",
+    description: ""
   })
   console.log(carDetails);
   const [allcardetails, setAllcardetails] = useState([])
@@ -47,14 +48,15 @@ function Home() {
       horsepower: "",
       topspeed: "",
       engine: "",
-      imgurl: ""
+      imgurl: "",
+      description: ""
     })
   }
 
   const handleAdd = async () => {
-    const { carname, brand, category, horsepower, topspeed, engine, imgurl } = carDetails
-    console.log(carname, brand, category, horsepower, topspeed, engine, imgurl);
-    if (!carname || !brand || !category || !horsepower || !topspeed || !engine || !imgurl) {
+    const { carname, brand, category, horsepower, topspeed, engine, imgurl, description } = carDetails
+    console.log(carname, brand, category, horsepower, topspeed, engine, imgurl, description);
+    if (!carname || !brand || !category || !horsepower || !topspeed || !engine || !imgurl || !description) {
       alert(`Fill the form completely`)
     } else {
       const result = await addcardetailsApi(carDetails)
@@ -74,16 +76,16 @@ function Home() {
   const getallcardetails = async () => {
     const result = await getallcardetailsApi()
     setAllcardetails(result.data)
-    setSortCarDetails(result.data.slice(0,6))
+    setSortCarDetails(result.data.slice(0, 6))
   }
   console.log(allcardetails);
 
- 
+
   useEffect(() => {
     if (sessionStorage.getItem('admin')) {
       setAdminStatus(sessionStorage.getItem('admin'))
     }
-  })
+  }, [])
 
   useEffect(() => {
     if (sessionStorage.getItem('user')) {
@@ -93,14 +95,14 @@ function Home() {
 
   useEffect(() => {
     getallcardetails()
-    
+
   }, [])
 
   return (
     <>
       {/* section 1 */}
       <div style={{ position: "sticky", top: "1px", zIndex: "2" }}>
-        <Header />
+        <Header setAdminStatus={setAdminStatus} adminStatus={adminStatus} />
       </div>
       <div className='text-primary fs-1' style={{}}>
 
@@ -159,6 +161,7 @@ function Home() {
             </div>
             <input value={carDetails.engine} onChange={(e) => setCarDetails({ ...carDetails, engine: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Engine' />
             <input value={carDetails.imgurl} onChange={(e) => setCarDetails({ ...carDetails, imgurl: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Image Url' />
+            <textarea value={carDetails.description} onChange={(e) => setCarDetails({ ...carDetails, description: e.target.value })} name="" id="" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Description about the car'></textarea>
           </Modal.Body>
           <Modal.Footer className='bg-dark'>
             <Button variant="secondary" onClick={handleCancel}>
@@ -177,7 +180,7 @@ function Home() {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <div className="row">
-             {sortCarDetails?.map((item)=>(<div className="col-md-4 d-flex justify-content-center mt-lg-1 mt-md-1 mt-4   homecarmaincard">
+              {sortCarDetails?.map((item) => (<div className="col-md-4 d-flex justify-content-center mt-lg-1 mt-md-1 mt-4   homecarmaincard">
                 <div className='homecarcard ' >
                   <img src={item?.imgurl} alt="" className='w-100' />
                 </div>
@@ -187,11 +190,11 @@ function Home() {
                   <div className='d-flex justify-content-center gap-3'>
                     <Viewimagemodal item={item} />
                     <Link to={`/singlecardetails/${item.id}`}>
-                    <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
-                      <FontAwesomeIcon icon={faAngleUp} />
-                    </button>
+                      <button className='carcardsbtns  px-2 py-1 fs-lg-4  fs-5'>
+                        <FontAwesomeIcon icon={faAngleUp} />
+                      </button>
                     </Link>
-                    
+
                   </div>
 
                 </div>

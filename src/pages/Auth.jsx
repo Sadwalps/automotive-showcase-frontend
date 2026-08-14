@@ -34,7 +34,7 @@ function Auth({ signup, admin }) {
         } else {
             const result = await adminsignupApi({ username, email, password })
             if (result.status >= 200 && result.status < 300) {
-                alert(`a Signup successfull`)
+                alert(`Signup successfull`)
                 setTimeout(() => {
                     navigate('/adminlogin')
                 }, 1000)
@@ -56,7 +56,7 @@ function Auth({ signup, admin }) {
                 const result = await adminloginApi(email, password)
                 if (result.status == 200) {
                     if (result.data.length > 0) {
-                        alert(`a login successfull`)
+                        alert(`login successfull`)
                         sessionStorage.setItem("admin", JSON.stringify(result.data[0]))
                         sessionStorage.setItem("role", "admin")
                         setLoginResponse(true)

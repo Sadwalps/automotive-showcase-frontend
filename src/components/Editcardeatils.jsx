@@ -17,7 +17,8 @@ function Editcardeatils({ item }) {
         horsepower: item?.horsepower,
         topspeed: item?.topspeed,
         engine: item?.engine,
-        imgurl: item?.imgurl
+        imgurl: item?.imgurl,
+        description: item?.description
     })
     console.log(editcardetails);
 
@@ -35,14 +36,15 @@ function Editcardeatils({ item }) {
             horsepower: item?.horsepower,
             topspeed: item?.topspeed,
             engine: item?.engine,
-            imgurl: item?.imgurl
+            imgurl: item?.imgurl,
+            description: item?.description
         })
     }
 
     const handleEdit = async (id) => {
-        const { carname, brand, category, horsepower, topspeed, engine, imgurl } = editcardetails
-        console.log(carname, brand, category, horsepower, topspeed, engine, imgurl);
-        if (!carname || !brand || !category || !horsepower || !topspeed || !engine || !imgurl) {
+        const { carname, brand, category, horsepower, topspeed, engine, imgurl, description } = editcardetails
+        console.log(carname, brand, category, horsepower, topspeed, engine, imgurl,description);
+        if (!carname || !brand || !category || !horsepower || !topspeed || !engine || !imgurl || !description) {
             alert(`Fill the form completely`)
         } else {
             const result = await editcardetailsApi(id, editcardetails)
@@ -83,6 +85,7 @@ function Editcardeatils({ item }) {
                     </div>
                     <input value={editcardetails.engine} onChange={(e) => setEditcardetails({ ...editcardetails, engine: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Engine' />
                     <input value={editcardetails.imgurl} onChange={(e) => setEditcardetails({ ...editcardetails, imgurl: e.target.value })} type="text" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Car Image Url' />
+                    <textarea value={editcardetails.description} onChange={(e) => setEditcardetails({ ...editcardetails, description: e.target.value })} name="" id="" className='form-control py-lg-2 py-1 text-center mt-2' placeholder='Description About The Car'></textarea>
                 </Modal.Body>
                 <Modal.Footer className='bg-dark'>
                     <Button variant="secondary" onClick={handleCancel} >

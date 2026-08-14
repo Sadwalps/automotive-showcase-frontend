@@ -62,7 +62,7 @@ function Singlecardetails() {
                                 <h3 className='singlecardetailstext'><span style={{ fontWeight: "bold" }}>Engine:</span> {singlecardetails?.engine}</h3>
                             </div>
                         </div>
-                        <p className='mt-4 singlecardetailstext2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae vitae velit minus numquam dolores maiores quam, deleniti cum, dignissimos accusantium inventore doloribus a nemo repellat ipsa voluptas. Quis, iusto rerum!</p>
+                        <p className='mt-4 singlecardetailstext2'>{singlecardetails?.description}</p>
                     </div>
                     <div className="col-md-1"></div>
                 </div>
